@@ -35,7 +35,7 @@ public class AplicacaoMundo {
 		Atendente lucas = new Atendente("Lucas");
 		Atendente victor = new Atendente("Victor");
 		Atendente alexandre = new Atendente("Alexandre");
-		Atendente elias = new Atendente("Eliass");
+		Atendente elias = new Atendente("Elias");
 		Atendente loja = new Atendente("Loja");
 		Atendente nailton = new Atendente("Nailton");
 		Atendente julia = new Atendente("Julia");

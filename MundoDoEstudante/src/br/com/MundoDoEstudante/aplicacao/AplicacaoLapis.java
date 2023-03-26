@@ -23,8 +23,7 @@ public class AplicacaoLapis {
 		lista.get(1).setGratificacao(lista.get(1).getVendasSemana() * SEGUNDO_COLOCADO);
 		lista.get(2).setGratificacao(lista.get(2).getVendasSemana() * TERCEIRO_COLOCADO);
 		
-		lista.subList(3, lista.size()).forEach((demaisAtendentes) -> 
-		demaisAtendentes.setGratificacao(demaisAtendentes.getVendasSemana() * DEMAIS_COLOCADO));
+		lista.subList(3, lista.size()).forEach((demaisAtendentes) -> demaisAtendentes.setGratificacao(demaisAtendentes.getVendasSemana() * DEMAIS_COLOCADO));
 	}
 	
 	public static void main(String args[]) {

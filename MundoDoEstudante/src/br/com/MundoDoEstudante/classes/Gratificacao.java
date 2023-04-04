@@ -4,6 +4,6 @@ public interface Gratificacao {
 	
 
 	double getGraficacao();
-	void setGratificacao(double valor);
+	void setGratificacaoSemana(double valor);
 
 }

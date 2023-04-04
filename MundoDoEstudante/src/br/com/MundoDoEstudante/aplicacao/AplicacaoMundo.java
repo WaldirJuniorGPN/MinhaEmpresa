@@ -13,6 +13,8 @@ public class AplicacaoMundo {
 	public static final double TERCEIRO_COLOCADO = 0.006;
 	public static final double DEMAIS_COLOCADOS = 0.005;
 	
+	static double total = 0;
+	
 	static List<Atendente> lista = new ArrayList<Atendente>();
 	
 	public static void calculadoraGratificacao() {
@@ -20,22 +22,30 @@ public class AplicacaoMundo {
 		lista.sort((a1, a2) -> Double.compare(a1.getVendasSemana(), a2.getVendasSemana()));
 		Collections.reverse(lista);	
 		
-		lista.get(0).setGratificacao(lista.get(0).getVendasSemana() * PRIMEIRO_COLOCADO);
-		lista.get(1).setGratificacao(lista.get(1).getVendasSemana() * SEGUNDO_COLOCADO);
-		lista.get(2).setGratificacao(lista.get(2).getVendasSemana() * TERCEIRO_COLOCADO);
+		lista.get(0).setGratificacaoSemana(lista.get(0).getVendasSemana() * PRIMEIRO_COLOCADO);
+		lista.get(1).setGratificacaoSemana(lista.get(1).getVendasSemana() * SEGUNDO_COLOCADO);
+		lista.get(2).setGratificacaoSemana(lista.get(2).getVendasSemana() * TERCEIRO_COLOCADO);
 		
 		lista.subList(3, lista.size()).forEach((atribuiDemais) -> 
-		atribuiDemais.setGratificacao(atribuiDemais.getVendasSemana() * DEMAIS_COLOCADOS));
+		atribuiDemais.setGratificacaoSemana(atribuiDemais.getVendasSemana() * DEMAIS_COLOCADOS));
+		
+		for (Atendente atendente : lista) {
+			atendente.setVendasPrimeiraSemana(0);
+		}
+	}
+	
+	static void calculaSemana() {
+		for (Atendente atendente : lista) {
+			total += atendente.getVendasSemana();
+		}
+		System.out.println(total);
 	}
 	
 	public static void main (String args[]) {
 		
-		Atendente felipe = new Atendente("Felipe");
-		Atendente goncalves = new Atendente("Goncalves");
 		Atendente lucas = new Atendente("Lucas");
 		Atendente victor = new Atendente("Victor");
 		Atendente alexandre = new Atendente("Alexandre");
-		Atendente elias = new Atendente("Elias");
 		Atendente loja = new Atendente("Loja");
 		Atendente nailton = new Atendente("Nailton");
 		Atendente julia = new Atendente("Julia");
@@ -43,13 +53,18 @@ public class AplicacaoMundo {
 		Atendente camila = new Atendente("Camila");
 		Atendente alvaro = new Atendente("Alvaro");
 		Atendente thaina = new Atendente("Thaina");
+		Atendente costa = new Atendente("Costa");
+		Atendente kawan = new Atendente("Kawan");
+		Atendente natiele = new Atendente("Natiele");
+		Atendente sara = new Atendente("Sara");
 		
-		lista.add(felipe);
-		lista.add(goncalves);
+		lista.add(sara);
+		lista.add(natiele);
+		lista.add(kawan);
+		lista.add(costa);
 		lista.add(lucas);
 		lista.add(victor);
 		lista.add(alexandre);
-		lista.add(elias);
 		lista.add(loja);
 		lista.add(nailton);
 		lista.add(julia);
@@ -57,84 +72,86 @@ public class AplicacaoMundo {
 		lista.add(camila);
 		lista.add(alvaro);
 		lista.add(thaina);
-
-		felipe.setVendasPrimeiraSemana(2399.39);
-		goncalves.setVendasPrimeiraSemana(680.97);
-		lucas.setVendasPrimeiraSemana(358.43);
-		victor.setVendasPrimeiraSemana(288.80);
-		alexandre.setVendasPrimeiraSemana(319.80);
-		elias.setVendasPrimeiraSemana(1119.75);
-		loja.setVendasPrimeiraSemana(2606.84);
-		nailton.setVendasPrimeiraSemana(3166.94);
-		julia.setVendasPrimeiraSemana(2667.66);
-		apoio.setVendasPrimeiraSemana(1516.36);
-		camila.setVendasPrimeiraSemana(2443.04);
-		alvaro.setVendasPrimeiraSemana(168.29);
-		thaina.setVendasPrimeiraSemana(3132.95);
+		
+		sara.setVendasPrimeiraSemana(1266.70);
+		natiele.setVendasPrimeiraSemana(7607.06);
+		kawan.setVendasPrimeiraSemana(6000.87);
+		costa.setVendasPrimeiraSemana(10167.19);
+		lucas.setVendasPrimeiraSemana(2153.26);
+		victor.setVendasPrimeiraSemana(8439.69);
+		alexandre.setVendasPrimeiraSemana(15.98);
+		loja.setVendasPrimeiraSemana(4538.51+157.30);
+		nailton.setVendasPrimeiraSemana(4195.37);
+		julia.setVendasPrimeiraSemana(20.00);
+		apoio.setVendasPrimeiraSemana(0);
+		camila.setVendasPrimeiraSemana(8496.77);
+		alvaro.setVendasPrimeiraSemana(83.45);
+		thaina.setVendasPrimeiraSemana(5198.26);
+		
 		
 		calculadoraGratificacao();
 		
-		felipe.setVendasSegundaSemana(8129.45);
-		goncalves.setVendasSegundaSemana(4747.84);
-		lucas.setVendasSegundaSemana(2765.58);
-		victor.setVendasSegundaSemana(2753.33);
-		alexandre.setVendasSegundaSemana(216.80);
-		elias.setVendasSegundaSemana(4521.29);
-		loja.setVendasSegundaSemana(3414.08);
-		nailton.setVendasSegundaSemana(6075.28);
-		julia.setVendasSegundaSemana(6749.27);
-		apoio.setVendasSegundaSemana(58.08);
-		camila.setVendasSegundaSemana(4776.91);
-		alvaro.setVendasSegundaSemana(445.35);
-		thaina.setVendasSegundaSemana(9637.52);
+		natiele.setVendasSegundaSemana(9911.03);
+		kawan.setVendasSegundaSemana(9001.82);
+		costa.setVendasSegundaSemana(9258.39);
+		lucas.setVendasSegundaSemana(3512.52);
+		victor.setVendasSegundaSemana(7992.30);
+		alexandre.setVendasSegundaSemana(34.26);
+		loja.setVendasSegundaSemana(5.97+7194.57);
+		nailton.setVendasSegundaSemana(7283.30);
+		julia.setVendasSegundaSemana(0);
+		apoio.setVendasSegundaSemana(0);
+		camila.setVendasSegundaSemana(10988.19);
+		alvaro.setVendasSegundaSemana(314.73);
+		thaina.setVendasSegundaSemana(16164.86);
 		
 		calculadoraGratificacao();
 		
-		felipe.setVendasTerceiraSemana(11635.96);
-		goncalves.setVendasTerceiraSemana(4826.95);
-		lucas.setVendasTerceiraSemana(1339.13);
-		victor.setVendasTerceiraSemana(3478.77);
-		alexandre.setVendasTerceiraSemana(50.00);
-		elias.setVendasTerceiraSemana(5352.84);
-		loja.setVendasTerceiraSemana(3665.90);
-		nailton.setVendasTerceiraSemana(6465.58);
-		julia.setVendasTerceiraSemana(9241.50);
-		apoio.setVendasTerceiraSemana(1001.68);
-		camila.setVendasTerceiraSemana(5024.59);
-		alvaro.setVendasTerceiraSemana(1438.44);
-		thaina.setVendasTerceiraSemana(9439.81);
+		natiele.setVendasTerceiraSemana(11011.94);
+		kawan.setVendasTerceiraSemana(13692.83);
+		costa.setVendasTerceiraSemana(7575.07);
+		lucas.setVendasTerceiraSemana(4519.89);
+		victor.setVendasTerceiraSemana(13017.03);
+		alexandre.setVendasTerceiraSemana(3.80);
+		loja.setVendasTerceiraSemana(6026.94);
+		nailton.setVendasTerceiraSemana(1963.57);
+		julia.setVendasTerceiraSemana(0);
+		apoio.setVendasTerceiraSemana(0);
+		camila.setVendasTerceiraSemana(6921.01);
+		alvaro.setVendasTerceiraSemana(805.57);
+		thaina.setVendasTerceiraSemana(15760.25);
 		
 		calculadoraGratificacao();
 		
-		felipe.setVendasQuartaSemana(10555.75);
-		goncalves.setVendasQuartaSemana(6776.44);
-		lucas.setVendasQuartaSemana(905.36);
-		victor.setVendasQuartaSemana(981.15);
-		alexandre.setVendasQuartaSemana(1102.87);
-		elias.setVendasQuartaSemana(8024.22);
-		loja.setVendasQuartaSemana(5404.32);
-		nailton.setVendasQuartaSemana(10452.41);
-		julia.setVendasQuartaSemana(5830.30);
-		apoio.setVendasQuartaSemana(771.70);
-		camila.setVendasQuartaSemana(7411.71);
-		alvaro.setVendasQuartaSemana(326.95);
-		thaina.setVendasQuartaSemana(9305.00);
+		natiele.setVendasQuartaSemana(7599.27);
+		kawan.setVendasQuartaSemana(10376.85);
+		costa.setVendasQuartaSemana(6059.31);
+		lucas.setVendasQuartaSemana(2085.56);
+		victor.setVendasQuartaSemana(6645.10);
+		alexandre.setVendasQuartaSemana(75.90);
+		loja.setVendasQuartaSemana(5845.04);
+		nailton.setVendasQuartaSemana(9423.48);
+		julia.setVendasQuartaSemana(0);
+		apoio.setVendasQuartaSemana(549.43);
+		camila.setVendasQuartaSemana(10694.37);
+		alvaro.setVendasQuartaSemana(813.38);
+		thaina.setVendasQuartaSemana(11154.77);
 		
 		calculadoraGratificacao();
 		
-		felipe.setVendasQuintaSemana(14402.92);
-		goncalves.setVendasQuintaSemana(9400.77);
-		lucas.setVendasQuintaSemana(421.73);
-		victor.setVendasQuintaSemana(14.97);
-		alexandre.setVendasQuintaSemana(44.39);
-		elias.setVendasQuintaSemana(9872.83);
-		loja.setVendasQuintaSemana(1985.65);
-		nailton.setVendasQuintaSemana(8770.94);
-		julia.setVendasQuintaSemana(8177.20);
-		apoio.setVendasQuintaSemana(1185.09);
-		camila.setVendasQuintaSemana(10945.41);
-		alvaro.setVendasQuintaSemana(112.16);
-		thaina.setVendasQuintaSemana(12983.51);
+		natiele.setVendasQuintaSemana(7430.99);
+		kawan.setVendasQuintaSemana(6201.35);
+		costa.setVendasQuintaSemana(3673.24);
+		lucas.setVendasQuintaSemana(1261.58);
+		victor.setVendasQuintaSemana(5661.08);
+		alexandre.setVendasQuintaSemana(2.8);
+		loja.setVendasQuintaSemana(2738.32+30);
+		nailton.setVendasQuintaSemana(3955.59);
+		julia.setVendasQuintaSemana(2500.07);
+		apoio.setVendasQuintaSemana(168.70);
+		camila.setVendasQuintaSemana(6446.73);
+		alvaro.setVendasQuintaSemana(282.34);
+		thaina.setVendasQuintaSemana(8184.71);
 		
 		calculadoraGratificacao();
 		

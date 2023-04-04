@@ -13,18 +13,32 @@ public class AplicacaoLapis {
 	public static final double TERCEIRO_COLOCADO = 0.006;
 	public static final double DEMAIS_COLOCADO = 0.005;
 	
+	public static double total = 0;
+	
 	public static List<Atendente> lista = new ArrayList<Atendente>();
 	
 	public static void calculadorGratificacao() {
 		lista.sort((a1, a2) -> Double.compare(a1.getVendasSemana(), a2.getVendasSemana()));
 		Collections.reverse(lista);
 		
-		lista.get(0).setGratificacao(lista.get(0).getVendasSemana() * PRIMEIRO_COLOCADO);
-		lista.get(1).setGratificacao(lista.get(1).getVendasSemana() * SEGUNDO_COLOCADO);
-		lista.get(2).setGratificacao(lista.get(2).getVendasSemana() * TERCEIRO_COLOCADO);
+		lista.get(0).setGratificacaoSemana(lista.get(0).getVendasSemana() * PRIMEIRO_COLOCADO);
+		lista.get(1).setGratificacaoSemana(lista.get(1).getVendasSemana() * SEGUNDO_COLOCADO);
+		lista.get(2).setGratificacaoSemana(lista.get(2).getVendasSemana() * TERCEIRO_COLOCADO);
 		
 		lista.subList(3, lista.size()).forEach((demaisAtendentes) -> 
-		demaisAtendentes.setGratificacao(demaisAtendentes.getVendasSemana() * DEMAIS_COLOCADO));
+		demaisAtendentes.setGratificacaoSemana(demaisAtendentes.getVendasSemana() * DEMAIS_COLOCADO));
+		
+		for(Atendente atendente : lista) {
+			atendente.setVendasPrimeiraSemana(0);
+		}
+		
+	}
+	
+	static void calculaSemana() {
+		for (Atendente atendente : lista) {
+			total += atendente.getVendasSemana();
+		}
+		System.out.println(total);
 	}
 	
 	public static void main(String args[]) {
@@ -51,61 +65,66 @@ public class AplicacaoLapis {
 		lista.add(loja);
 		lista.add(lincoln);
 		
-		erik.setVendasPrimeiraSemana(15616.16);
-		val.setVendasPrimeiraSemana(13559.07);
-		cintiane.setVendasPrimeiraSemana(1962.71);
-		lincoln.setVendasPrimeiraSemana(11414.20);
-		loja.setVendasPrimeiraSemana(2059.38);
-		gabriel.setVendasPrimeiraSemana(13567.28);
-		guilherme.setVendasPrimeiraSemana(13304.23);
+		rodrigues.setVendasPrimeiraSemana(2832.75);
+		erik.setVendasPrimeiraSemana(3259.36);
+		val.setVendasPrimeiraSemana(7354.02);
+		cintiane.setVendasPrimeiraSemana(647.13);
+		lincoln.setVendasPrimeiraSemana(5069.22);
+		loja.setVendasPrimeiraSemana(3828.81 + 1271.76);
+		gabriel.setVendasPrimeiraSemana(1839.17);
+		guilherme.setVendasPrimeiraSemana(2926.29);
 		
 		calculadorGratificacao();
 		
 		jhon.setVendasSegundaSemana(0);
 		jose.setVendasSegundaSemana(0);
-		cintiane.setVendasSegundaSemana(488.78);
-		lincoln.setVendasSegundaSemana(12615.13);
-		val.setVendasSegundaSemana(14588.91);
-		erik.setVendasSegundaSemana(18134.84);
-		loja.setVendasSegundaSemana(5847.74);
-		gabriel.setVendasSegundaSemana(18115.96);
-		guilherme.setVendasSegundaSemana(14967.65);
+		cintiane.setVendasSegundaSemana(1919.74);
+		lincoln.setVendasSegundaSemana(5861.36);
+		val.setVendasSegundaSemana(13162.80);
+		erik.setVendasSegundaSemana(3396.00);
+		loja.setVendasSegundaSemana(5046.42);
+		gabriel.setVendasSegundaSemana(5268.06);
+		guilherme.setVendasSegundaSemana(6057.32);
+		rodrigues.setVendasSegundaSemana(4205.93);
 		
 		calculadorGratificacao();
 		
 		jhon.setVendasTerceiraSemana(0);
 		jose.setVendasTerceiraSemana(0);
-		cintiane.setVendasTerceiraSemana(447.36);
-		lincoln.setVendasTerceiraSemana(13227.11);
-		val.setVendasTerceiraSemana(20269.49);
-		erik.setVendasTerceiraSemana(28574.94);
-		loja.setVendasTerceiraSemana(9922.24);
-		gabriel.setVendasTerceiraSemana(20657.84);
-		guilherme.setVendasTerceiraSemana(22911.65);
+		cintiane.setVendasTerceiraSemana(1511.73);
+		lincoln.setVendasTerceiraSemana(7738.51);
+		val.setVendasTerceiraSemana(12543.55);
+		erik.setVendasTerceiraSemana(2179.07);
+		loja.setVendasTerceiraSemana(4906.21);
+		gabriel.setVendasTerceiraSemana(5315.16);
+		guilherme.setVendasTerceiraSemana(2228.95);
+		rodrigues.setVendasTerceiraSemana(4355.42);
 		
 		calculadorGratificacao();
 		
 		jhon.setVendasQuartaSemana(0);
 		jose.setVendasQuartaSemana(0);
-		cintiane.setVendasQuartaSemana(161.84);
-		lincoln.setVendasQuartaSemana(26980.66);
-		val.setVendasQuartaSemana(43287.50);
-		erik.setVendasQuartaSemana(36329.91);
-		loja.setVendasQuartaSemana(22649.17);
-		gabriel.setVendasQuartaSemana(29515.93);
-		guilherme.setVendasQuartaSemana(24515.44);
+		cintiane.setVendasQuartaSemana(2121.96);
+		lincoln.setVendasQuartaSemana(5536.44);
+		val.setVendasQuartaSemana(10936.55);
+		erik.setVendasQuartaSemana(6233.35);
+		loja.setVendasQuartaSemana(2304.55);
+		gabriel.setVendasQuartaSemana(3685.74);
+		guilherme.setVendasQuartaSemana(0);
+		rodrigues.setVendasQuartaSemana(3927.86);
 		
 		calculadorGratificacao();
 		
-		jhon.setVendasQuintaSemana(19.90);
+		jhon.setVendasQuintaSemana(0);
 		jose.setVendasQuintaSemana(0);
-		cintiane.setVendasQuintaSemana(464.82);
-		lincoln.setVendasQuintaSemana(14577.41);
-		val.setVendasQuintaSemana(20416.83);
-		erik.setVendasQuintaSemana(8994.29);
-		loja.setVendasQuintaSemana(9444.41);
-		gabriel.setVendasQuintaSemana(7861.14);
-		guilherme.setVendasQuintaSemana(11756.76);
+		cintiane.setVendasQuintaSemana(1438.62);
+		lincoln.setVendasQuintaSemana(4625.86);
+		val.setVendasQuintaSemana(8249.70);
+		erik.setVendasQuintaSemana(3803.60);
+		loja.setVendasQuintaSemana(1608.60);
+		gabriel.setVendasQuintaSemana(3358.63);
+		guilherme.setVendasQuintaSemana(0);
+		rodrigues.setVendasQuintaSemana(5172.51);
 		
 		calculadorGratificacao();
 		

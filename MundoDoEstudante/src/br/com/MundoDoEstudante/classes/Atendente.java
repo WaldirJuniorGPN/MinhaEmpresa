@@ -6,7 +6,8 @@ public class Atendente extends Funcionario implements Gratificacao {
 
 	private double vendasSemana;
 	private double vendasTotal;
-	private double gratificacao;
+	private double gratificacaoSemana;
+	private double gratificacaoTotal;
 
 	public Atendente(String nome) {
 		super(nome);
@@ -14,13 +15,18 @@ public class Atendente extends Funcionario implements Gratificacao {
 
 	@Override
 	public double getGraficacao() {
-		return this.gratificacao;
+		return this.gratificacaoSemana;
 	}
 
 	@Override
-	public void setGratificacao(double valor) {
-		this.gratificacao += valor;
+	public void setGratificacaoSemana(double valor) {
+		this.gratificacaoSemana = valor;
+		this.gratificacaoTotal += valor;
 
+	}
+	
+	public double getGratificacaoTotal() {
+		return this.gratificacaoTotal;
 	}
 
 	public double getVendasTotal() {
@@ -57,7 +63,7 @@ public class Atendente extends Funcionario implements Gratificacao {
 
 		@SuppressWarnings("deprecation")
 		String novaString = String.format(new Locale("pt", "BR"), "Funcionario: %s%nVendas: %.2f%nGratificacao: %.2f%n"
-				, this.getNome(), this.getVendasTotal(), this.getGraficacao());
+				, this.getNome(), this.getVendasTotal(), this.getGratificacaoTotal());
 		return novaString;
 
 	}

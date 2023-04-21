@@ -2,6 +2,7 @@ package br.com.MundoDoEstudante.aplicacao;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import br.com.MundoDoEstudante.classes.Atendente;
@@ -19,7 +20,8 @@ public class AplicacaoMundo {
 	
 	public static void calculadoraGratificacao() {
 		
-		lista.sort((a1, a2) -> Double.compare(a1.getVendasSemana(), a2.getVendasSemana()));
+//		lista.sort((a1, a2) -> Double.compare(a1.getVendasSemana(), a2.getVendasSemana()));
+		lista.sort(Comparator.comparing(Atendente::getVendasSemana));
 		Collections.reverse(lista);	
 		
 		lista.get(0).setGratificacaoSemana(lista.get(0).getVendasSemana() * PRIMEIRO_COLOCADO);
@@ -155,7 +157,8 @@ public class AplicacaoMundo {
 		
 		calculadoraGratificacao();
 		
-		lista.sort((a1, a2) -> Double.compare(a1.getVendasTotal(), a2.getVendasTotal()));
+//		lista.sort((a1, a2) -> Double.compare(a1.getVendasTotal(), a2.getVendasTotal()));
+		lista.sort(Comparator.comparing(Atendente::getVendasTotal));
 		Collections.reverse(lista);	
 		
 		lista.forEach((resultados) -> System.out.println(resultados));

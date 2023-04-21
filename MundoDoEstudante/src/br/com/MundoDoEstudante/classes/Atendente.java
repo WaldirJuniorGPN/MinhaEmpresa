@@ -61,7 +61,6 @@ public class Atendente extends Funcionario implements Gratificacao {
 	@Override
 	public String toString() {
 
-		@SuppressWarnings("deprecation")
 		String novaString = String.format(new Locale("pt", "BR"), "Funcionario: %s%nVendas: %.2f%nGratificacao: %.2f%n"
 				, this.getNome(), this.getVendasTotal(), this.getGratificacaoTotal());
 		return novaString;

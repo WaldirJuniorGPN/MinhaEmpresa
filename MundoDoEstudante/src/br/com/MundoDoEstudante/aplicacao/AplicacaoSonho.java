@@ -1,5 +1,6 @@
 package br.com.MundoDoEstudante.aplicacao;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -104,4 +105,8 @@ public class AplicacaoSonho {
 		lista.forEach((atendentes) -> System.out.println(atendentes));
 	}
 
+=======
+public class AplicacaoSonho {
+
+>>>>>>> master
 }

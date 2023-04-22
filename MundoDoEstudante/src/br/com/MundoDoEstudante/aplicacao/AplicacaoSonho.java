@@ -2,6 +2,7 @@ package br.com.MundoDoEstudante.aplicacao;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import br.com.MundoDoEstudante.classes.Atendente;
@@ -15,7 +16,7 @@ public class AplicacaoSonho {
 	public static List<Atendente> lista = new ArrayList<Atendente>();
 	
 	public static void calculadorGratificacao() {
-		lista.sort((a1, a2) -> Double.compare(a1.getVendasSemana(),a2.getVendasSemana()));
+		lista.sort(Comparator.comparing(Atendente::getVendasSemana));
 		Collections.reverse(lista);
 		
 		lista.get(0).setGratificacaoSemana(lista.get(0).getVendasSemana() * PRIMEIRO_COLOCADO);

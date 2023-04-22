@@ -8,40 +8,7 @@ import java.util.List;
 import br.com.MundoDoEstudante.classes.Atendente;
 
 public class AplicacaoMundo {
-	
-	public static final double PRIMEIRO_COLOCADO = 0.010;
-	public static final double SEGUNDO_COLOCADO = 0.008;
-	public static final double TERCEIRO_COLOCADO = 0.006;
-	public static final double DEMAIS_COLOCADOS = 0.005;
-	
-	static double total = 0;
-	
-	static List<Atendente> lista = new ArrayList<Atendente>();
-	
-	public static void calculadoraGratificacao() {
-		
-//		lista.sort((a1, a2) -> Double.compare(a1.getVendasSemana(), a2.getVendasSemana()));
-		lista.sort(Comparator.comparing(Atendente::getVendasSemana));
-		Collections.reverse(lista);	
-		
-		lista.get(0).setGratificacaoSemana(lista.get(0).getVendasSemana() * PRIMEIRO_COLOCADO);
-		lista.get(1).setGratificacaoSemana(lista.get(1).getVendasSemana() * SEGUNDO_COLOCADO);
-		lista.get(2).setGratificacaoSemana(lista.get(2).getVendasSemana() * TERCEIRO_COLOCADO);
-		
-		lista.subList(3, lista.size()).forEach((atribuiDemais) -> 
-		atribuiDemais.setGratificacaoSemana(atribuiDemais.getVendasSemana() * DEMAIS_COLOCADOS));
-		
-		for (Atendente atendente : lista) {
-			atendente.setVendasPrimeiraSemana(0);
-		}
-	}
-	
-	static void calculaSemana() {
-		for (Atendente atendente : lista) {
-			total += atendente.getVendasSemana();
-		}
-		System.out.println(total);
-	}
+
 	
 	public static void main (String args[]) {
 		
@@ -60,20 +27,7 @@ public class AplicacaoMundo {
 		Atendente natiele = new Atendente("Natiele");
 		Atendente sara = new Atendente("Sara");
 		
-		lista.add(sara);
-		lista.add(natiele);
-		lista.add(kawan);
-		lista.add(costa);
-		lista.add(lucas);
-		lista.add(victor);
-		lista.add(alexandre);
-		lista.add(loja);
-		lista.add(nailton);
-		lista.add(julia);
-		lista.add(apoio);
-		lista.add(camila);
-		lista.add(alvaro);
-		lista.add(thaina);
+		Atendente.calculadorGratificacao("Mundo");
 		
 		sara.setVendasPrimeiraSemana(1266.70);
 		natiele.setVendasPrimeiraSemana(7607.06);
@@ -90,8 +44,7 @@ public class AplicacaoMundo {
 		alvaro.setVendasPrimeiraSemana(83.45);
 		thaina.setVendasPrimeiraSemana(5198.26);
 		
-		
-		calculadoraGratificacao();
+		Atendente.calculadorGratificacao("Mundo");
 		
 		natiele.setVendasSegundaSemana(9911.03);
 		kawan.setVendasSegundaSemana(9001.82);
@@ -107,7 +60,7 @@ public class AplicacaoMundo {
 		alvaro.setVendasSegundaSemana(314.73);
 		thaina.setVendasSegundaSemana(16164.86);
 		
-		calculadoraGratificacao();
+		Atendente.calculadorGratificacao("Mundo");
 		
 		natiele.setVendasTerceiraSemana(11011.94);
 		kawan.setVendasTerceiraSemana(13692.83);
@@ -123,7 +76,7 @@ public class AplicacaoMundo {
 		alvaro.setVendasTerceiraSemana(805.57);
 		thaina.setVendasTerceiraSemana(15760.25);
 		
-		calculadoraGratificacao();
+		Atendente.calculadorGratificacao("Mundo");
 		
 		natiele.setVendasQuartaSemana(7599.27);
 		kawan.setVendasQuartaSemana(10376.85);
@@ -139,7 +92,7 @@ public class AplicacaoMundo {
 		alvaro.setVendasQuartaSemana(813.38);
 		thaina.setVendasQuartaSemana(11154.77);
 		
-		calculadoraGratificacao();
+		Atendente.calculadorGratificacao("Mundo");
 		
 		natiele.setVendasQuintaSemana(7430.99);
 		kawan.setVendasQuintaSemana(6201.35);
@@ -155,14 +108,11 @@ public class AplicacaoMundo {
 		alvaro.setVendasQuintaSemana(282.34);
 		thaina.setVendasQuintaSemana(8184.71);
 		
-		calculadoraGratificacao();
+		Atendente.calculadorGratificacao("Mundo");
 		
-//		lista.sort((a1, a2) -> Double.compare(a1.getVendasTotal(), a2.getVendasTotal()));
-		lista.sort(Comparator.comparing(Atendente::getVendasTotal));
-		Collections.reverse(lista);	
+		Atendente.ordenarVendaTotal();
 		
-		lista.forEach((resultados) -> System.out.println(resultados));
-		
+		Atendente.imprimeResultado();
 	}
 
 }

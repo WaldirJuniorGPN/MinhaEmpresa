@@ -1,36 +1,9 @@
 package br.com.MundoDoEstudante.aplicacao;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 import br.com.MundoDoEstudante.classes.Atendente;
 
 public class AplicacaoSonho {
 
-	public static final double PRIMEIRO_COLOCADO = 0.01;
-	public static final double SEGUNDO_COLOCADO = 0.008;
-	public static final double TERCEIRO_COLOCADO = 0.006;
-	public static final double DEMAIS_COLOCADOS = 0.005;
-	public static List<Atendente> lista = new ArrayList<Atendente>();
-	
-	public static void calculadorGratificacao() {
-		lista.sort(Comparator.comparing(Atendente::getVendasSemana));
-		Collections.reverse(lista);
-		
-		lista.get(0).setGratificacaoSemana(lista.get(0).getVendasSemana() * PRIMEIRO_COLOCADO);
-		lista.get(1).setGratificacaoSemana(lista.get(1).getVendasSemana() * SEGUNDO_COLOCADO);
-		lista.get(2).setGratificacaoSemana(lista.get(2).getVendasSemana() * TERCEIRO_COLOCADO);
-		
-		lista.subList(3, lista.size()).forEach((atendente) -> atendente.setGratificacaoSemana(atendente.getVendasSemana() * DEMAIS_COLOCADOS));
-		
-		for (Atendente atendente : lista) {
-			atendente.setVendasPrimeiraSemana(0);
-		}
-		
-	}
-	
 	public static void main (String args[]) {
 		
 		Atendente karol = new Atendente("Karol");
@@ -41,13 +14,7 @@ public class AplicacaoSonho {
 		Atendente sara = new Atendente("Sara");
 		Atendente loja= new Atendente("loja");
 		
-		lista.add(meiri);
-		lista.add(karol);
-		lista.add(dani);
-		lista.add(vanisse);
-		lista.add(alef);
-		lista.add(sara);
-		lista.add(loja);
+		Atendente.calculadorGratificacao("Sonho");
 		
 		karol.setVendasPrimeiraSemana(5529.19);
 		dani.setVendasPrimeiraSemana(7498.25);
@@ -57,7 +24,7 @@ public class AplicacaoSonho {
 		sara.setVendasPrimeiraSemana(862.26);
 		meiri.setVendasPrimeiraSemana(15704.94);
 		
-		calculadorGratificacao();
+		Atendente.calculadorGratificacao("Sonho");
 		
 		alef.setVendasSegundaSemana(7.99);
 		dani.setVendasSegundaSemana(6965.09);
@@ -67,7 +34,7 @@ public class AplicacaoSonho {
 		sara.setVendasSegundaSemana(7393.43);
 		meiri.setVendasSegundaSemana(7626.03);
 		
-		calculadorGratificacao();
+		Atendente.calculadorGratificacao("Sonho");
 		
 		alef.setVendasTerceiraSemana(0);
 		dani.setVendasTerceiraSemana(4107.13);
@@ -77,7 +44,7 @@ public class AplicacaoSonho {
 		sara.setVendasTerceiraSemana(6670.60);
 		meiri.setVendasTerceiraSemana(11770.92);
 		
-		calculadorGratificacao();
+		Atendente.calculadorGratificacao("Sonho");
 		
 		alef.setVendasQuartaSemana(0);
 		dani.setVendasQuartaSemana(7823.57);
@@ -87,7 +54,7 @@ public class AplicacaoSonho {
 		sara.setVendasQuartaSemana(5561.78);
 		meiri.setVendasQuartaSemana(4047.33);
 		
-		calculadorGratificacao();
+		Atendente.calculadorGratificacao("Sonho");
 		
 		alef.setVendasQuintaSemana(0);
 		dani.setVendasQuintaSemana(1874.83);
@@ -97,12 +64,11 @@ public class AplicacaoSonho {
 		sara.setVendasQuintaSemana(3201.65);
 		meiri.setVendasQuintaSemana(3374.60);
 		
-		calculadorGratificacao();
+		Atendente.calculadorGratificacao("Sonho");
 		
-		lista.sort((a1, a2) -> Double.compare(a1.getVendasTotal(), a2.getVendasTotal()));
-		Collections.reverse(lista);
+		Atendente.ordenarVendaTotal();
 		
-		lista.forEach((atendentes) -> System.out.println(atendentes));
+		Atendente.imprimeResultado();
 	}
 
 }

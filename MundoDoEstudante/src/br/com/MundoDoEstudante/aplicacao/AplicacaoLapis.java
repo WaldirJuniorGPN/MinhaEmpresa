@@ -8,39 +8,6 @@ import br.com.MundoDoEstudante.classes.Atendente;
 
 public class AplicacaoLapis {
 	
-	public static final double PRIMEIRO_COLOCADO = 0.01;
-	public static final double SEGUNDO_COLOCADO = 0.008;
-	public static final double TERCEIRO_COLOCADO = 0.006;
-	public static final double DEMAIS_COLOCADO = 0.005;
-	
-	public static double total = 0;
-	
-	public static List<Atendente> lista = new ArrayList<Atendente>();
-	
-	public static void calculadorGratificacao() {
-		lista.sort((a1, a2) -> Double.compare(a1.getVendasSemana(), a2.getVendasSemana()));
-		Collections.reverse(lista);
-		
-		lista.get(0).setGratificacaoSemana(lista.get(0).getVendasSemana() * PRIMEIRO_COLOCADO);
-		lista.get(1).setGratificacaoSemana(lista.get(1).getVendasSemana() * SEGUNDO_COLOCADO);
-		lista.get(2).setGratificacaoSemana(lista.get(2).getVendasSemana() * TERCEIRO_COLOCADO);
-		
-		lista.subList(3, lista.size()).forEach((demaisAtendentes) -> 
-		demaisAtendentes.setGratificacaoSemana(demaisAtendentes.getVendasSemana() * DEMAIS_COLOCADO));
-		
-		for(Atendente atendente : lista) {
-			atendente.setVendasPrimeiraSemana(0);
-		}
-		
-	}
-	
-	static void calculaSemana() {
-		for (Atendente atendente : lista) {
-			total += atendente.getVendasSemana();
-		}
-		System.out.println(total);
-	}
-	
 	public static void main(String args[]) {
 		
 		Atendente erik = new Atendente("Erik");
@@ -54,16 +21,7 @@ public class AplicacaoLapis {
 		Atendente loja= new Atendente("loja");
 		Atendente lincoln = new Atendente("Lincoln");
 		
-		lista.add(rodrigues);
-		lista.add(erik);
-		lista.add(val);
-		lista.add(gabriel);
-		lista.add(cintiane);
-		lista.add(jose);
-		lista.add(guilherme);
-		lista.add(jhon);
-		lista.add(loja);
-		lista.add(lincoln);
+		Atendente.calculadorGratificacao("Lapis");
 		
 		rodrigues.setVendasPrimeiraSemana(2832.75);
 		erik.setVendasPrimeiraSemana(3259.36);
@@ -74,7 +32,7 @@ public class AplicacaoLapis {
 		gabriel.setVendasPrimeiraSemana(1839.17);
 		guilherme.setVendasPrimeiraSemana(2926.29);
 		
-		calculadorGratificacao();
+		Atendente.calculadorGratificacao("Lapis");
 		
 		jhon.setVendasSegundaSemana(0);
 		jose.setVendasSegundaSemana(0);
@@ -87,7 +45,7 @@ public class AplicacaoLapis {
 		guilherme.setVendasSegundaSemana(6057.32);
 		rodrigues.setVendasSegundaSemana(4205.93);
 		
-		calculadorGratificacao();
+		Atendente.calculadorGratificacao("Lapis");
 		
 		jhon.setVendasTerceiraSemana(0);
 		jose.setVendasTerceiraSemana(0);
@@ -100,7 +58,7 @@ public class AplicacaoLapis {
 		guilherme.setVendasTerceiraSemana(2228.95);
 		rodrigues.setVendasTerceiraSemana(4355.42);
 		
-		calculadorGratificacao();
+		Atendente.calculadorGratificacao("Lapis");
 		
 		jhon.setVendasQuartaSemana(0);
 		jose.setVendasQuartaSemana(0);
@@ -113,7 +71,7 @@ public class AplicacaoLapis {
 		guilherme.setVendasQuartaSemana(0);
 		rodrigues.setVendasQuartaSemana(3927.86);
 		
-		calculadorGratificacao();
+		Atendente.calculadorGratificacao("Lapis");
 		
 		jhon.setVendasQuintaSemana(0);
 		jose.setVendasQuintaSemana(0);
@@ -126,13 +84,11 @@ public class AplicacaoLapis {
 		guilherme.setVendasQuintaSemana(0);
 		rodrigues.setVendasQuintaSemana(5172.51);
 		
-		calculadorGratificacao();
+		Atendente.calculadorGratificacao("Lapis");
 		
+		Atendente.ordenarVendaTotal();
 		
-		lista.sort((a1, a2) -> Double.compare(a1.getVendasTotal(), a2.getVendasTotal()));
-		Collections.reverse(lista);
-		
-		lista.forEach((resultados) -> System.out.println(resultados));
+		Atendente.imprimeResultado();
 		
 		
 	}

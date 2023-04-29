@@ -90,6 +90,11 @@ public class Atendente extends Funcionario implements Gratificacao {
 	}
 
 	public void setVendasPrimeiraSemana(double valor) {
+		
+		if(valor <= 0) {
+			throw new IllegalArgumentException("O valor da venda precisa ser maior do que zero");
+		}
+		
 		this.vendasSemana = valor;
 		this.vendasTotal += valor;
 	}

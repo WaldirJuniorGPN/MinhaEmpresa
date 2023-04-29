@@ -1,8 +1,6 @@
 package br.com.MundoDoEstudante.classes.calculadoraGratificacao;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import br.com.MundoDoEstudante.classes.Atendente;

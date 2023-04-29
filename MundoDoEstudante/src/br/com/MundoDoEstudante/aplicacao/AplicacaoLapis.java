@@ -85,7 +85,7 @@ public class AplicacaoLapis {
 		
 		Atendente.ordenarVendaTotal();
 		
-		Atendente.imprimeResultado();
+		Atendente.imprimirResultado();
 		
 		
 	}

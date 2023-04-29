@@ -69,7 +69,7 @@ public class AplicacaoSonho {
 		
 		Atendente.ordenarVendaTotal();
 		
-		Atendente.imprimeResultado();
+		Atendente.imprimirResultado();
 	}
 
 }

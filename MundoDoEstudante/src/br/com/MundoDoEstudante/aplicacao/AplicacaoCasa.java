@@ -51,7 +51,7 @@ public class AplicacaoCasa {
 		
 		Atendente.ordenarVendaTotal();
 		
-		Atendente.imprimeResultado();
+		Atendente.imprimirResultado();
 		
 	}
 }

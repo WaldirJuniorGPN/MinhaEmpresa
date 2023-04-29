@@ -108,7 +108,7 @@ public class AplicacaoMundo {
 		
 		Atendente.ordenarVendaTotal();
 		
-		Atendente.imprimeResultado();
+		Atendente.imprimirResultado();
 	}
 
 }

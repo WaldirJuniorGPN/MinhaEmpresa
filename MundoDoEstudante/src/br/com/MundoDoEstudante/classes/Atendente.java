@@ -13,9 +13,9 @@ import br.com.MundoDoEstudante.classes.calculadoraGratificacao.VovoCalculadoraGr
 
 public class Atendente extends Funcionario implements Gratificacao {
 
-	private double vendasSemana;
+	private double vendasSemanais;
 	private double vendasTotal;
-	private double gratificacaoSemana;
+	private double gratificacaoSemanal;
 	private double gratificacaoTotal;
 	static private List<Atendente> lista = new ArrayList<>();
 
@@ -32,12 +32,12 @@ public class Atendente extends Funcionario implements Gratificacao {
 
 	@Override
 	public double getGraficacao() {
-		return this.gratificacaoSemana;
+		return this.gratificacaoSemanal;
 	}
 
 	@Override
 	public void setGratificacaoSemana(double valor) {
-		this.gratificacaoSemana = valor;
+		this.gratificacaoSemanal = valor;
 		this.gratificacaoTotal += valor;
 
 	}
@@ -51,7 +51,7 @@ public class Atendente extends Funcionario implements Gratificacao {
 	}
 
 	public double getVendasSemana() {
-		return this.vendasSemana;
+		return this.vendasSemanais;
 	}
 
 	public void setVendasPrimeiraSemana(double valor) {
@@ -60,7 +60,7 @@ public class Atendente extends Funcionario implements Gratificacao {
 			throw new IllegalArgumentException("O valor da venda não pode ser negativo");
 		}
 
-		this.vendasSemana = valor;
+		this.vendasSemanais = valor;
 		this.vendasTotal += valor;
 	}
 
@@ -119,7 +119,7 @@ public class Atendente extends Funcionario implements Gratificacao {
 		Collections.reverse(lista);
 	}
 
-	public static void imprimeResultado() {
+	public static void imprimirResultado() {
 		lista.forEach(System.out::println);
 	}
 

@@ -1,12 +1,14 @@
 package br.com.MundoDoEstudante.classes;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
 import br.com.MundoDoEstudante.classes.calculadoraGratificacao.MundoCalculadoraGratificacao;
 
-public class Atendente extends Funcionario implements Gratificacao, CalculadorGratificacao {
+public class Atendente extends Funcionario implements Gratificacao {
 
 	private double vendasSemana;
 	private double vendasTotal;
@@ -22,6 +24,8 @@ public class Atendente extends Funcionario implements Gratificacao, CalculadorGr
 		super(nome);
 		lista.add(this);
 	}
+	
+	public Atendente() {}
 
 	@Override
 	public double getGraficacao() {
@@ -49,8 +53,8 @@ public class Atendente extends Funcionario implements Gratificacao, CalculadorGr
 
 	public void setVendasPrimeiraSemana(double valor) {
 
-		if (valor <= 0) {
-			throw new IllegalArgumentException("O valor da venda precisa ser maior do que zero");
+		if (valor < 0) {
+			throw new IllegalArgumentException("O valor da venda não pode ser negativo");
 		}
 
 		this.vendasSemana = valor;
@@ -82,10 +86,22 @@ public class Atendente extends Funcionario implements Gratificacao, CalculadorGr
 
 	}
 
-	@Override
-	public void calcularGratificacao(List<Atendente> atendentes) {
-		atendentes = lista;
-		new MundoCalculadoraGratificacao().calcularGratificacao(atendentes);
+	public static void calcularGratificacao() {
+		new MundoCalculadoraGratificacao(lista);
+		
+	}
+	
+	public static void ordenarVendaTotal() {
+		lista.sort(Comparator.comparing(Atendente::getVendasTotal));
+		Collections.reverse(lista);
+	}
+	
+	public static void imprimeResultado() {
+		lista.forEach(System.out::println);
+	}
+
+	public static void atualizarLista() {
+		lista = gratificacoes;
 	}
 
 }

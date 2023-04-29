@@ -22,7 +22,7 @@ public class AplicacaoMundo {
 		Atendente natiele = new Atendente("Natiele");
 		Atendente sara = new Atendente("Sara");
 		
-		Atendente.calculadorGratificacao();
+		Atendente.calcularGratificacao();
 		
 		sara.setVendasPrimeiraSemana(1266.70);
 		natiele.setVendasPrimeiraSemana(7607.06);
@@ -39,7 +39,7 @@ public class AplicacaoMundo {
 		alvaro.setVendasPrimeiraSemana(83.45);
 		thaina.setVendasPrimeiraSemana(5198.26);
 		
-		Atendente.calculadorGratificacao("Mundo");
+		Atendente.calcularGratificacao();
 		
 		natiele.setVendasSegundaSemana(9911.03);
 		kawan.setVendasSegundaSemana(9001.82);
@@ -55,7 +55,7 @@ public class AplicacaoMundo {
 		alvaro.setVendasSegundaSemana(314.73);
 		thaina.setVendasSegundaSemana(16164.86);
 		
-		Atendente.calculadorGratificacao("Mundo");
+		Atendente.calcularGratificacao();
 		
 		natiele.setVendasTerceiraSemana(11011.94);
 		kawan.setVendasTerceiraSemana(13692.83);
@@ -71,7 +71,7 @@ public class AplicacaoMundo {
 		alvaro.setVendasTerceiraSemana(805.57);
 		thaina.setVendasTerceiraSemana(15760.25);
 		
-		Atendente.calculadorGratificacao("Mundo");
+		Atendente.calcularGratificacao();
 		
 		natiele.setVendasQuartaSemana(7599.27);
 		kawan.setVendasQuartaSemana(10376.85);
@@ -87,7 +87,7 @@ public class AplicacaoMundo {
 		alvaro.setVendasQuartaSemana(813.38);
 		thaina.setVendasQuartaSemana(11154.77);
 		
-		Atendente.calculadorGratificacao("Mundo");
+		Atendente.calcularGratificacao();
 		
 		natiele.setVendasQuintaSemana(7430.99);
 		kawan.setVendasQuintaSemana(6201.35);
@@ -103,7 +103,7 @@ public class AplicacaoMundo {
 		alvaro.setVendasQuintaSemana(282.34);
 		thaina.setVendasQuintaSemana(8184.71);
 		
-		Atendente.calculadorGratificacao("Mundo");
+		Atendente.calcularGratificacao();
 		
 		Atendente.ordenarVendaTotal();
 		

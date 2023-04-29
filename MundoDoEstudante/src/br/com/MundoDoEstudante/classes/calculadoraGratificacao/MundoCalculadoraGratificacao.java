@@ -16,10 +16,13 @@ public class MundoCalculadoraGratificacao implements CalculadorGratificacao {
 	private static final Double DEMAIS_COLOCADOS = 0.1;
 	private List<Atendente> gratificacoes = new ArrayList<>();
 	
+	public MundoCalculadoraGratificacao(List<Atendente> lista) {
+		gratificacoes = lista;
+	}
+	
 	@Override
-	public void calcularGratificacao(List<Atendente> atendentes) {
+	public void calcularGratificacao() {
 		
-		gratificacoes = atendentes;
 
 		gratificacoes.sort(Comparator.comparing(Atendente::getVendasSemana));
 		Collections.reverse(gratificacoes);
@@ -29,6 +32,8 @@ public class MundoCalculadoraGratificacao implements CalculadorGratificacao {
 
 		gratificacoes.subList(3, gratificacoes.size()).forEach(
 				atendente -> atendente.setGratificacaoSemana(atendente.getVendasSemana() * DEMAIS_COLOCADOS));
+		
+		Atendente.
 		
 	}
 	

@@ -27,9 +27,8 @@ public class Atendente extends Funcionario implements Gratificacao {
 		super(nome);
 		lista.add(this);
 	}
-
-	public Atendente() {
-	}
+	
+	public Atendente() {}
 
 	@Override
 	public double getGraficacao() {
@@ -110,6 +109,11 @@ public class Atendente extends Funcionario implements Gratificacao {
 
 	}
 
+	public static void calcularGratificacao() {
+		new MundoCalculadoraGratificacao(lista);
+		
+	}
+	
 	public static void ordenarVendaTotal() {
 		lista.sort(Comparator.comparing(Atendente::getVendasTotal));
 		Collections.reverse(lista);

@@ -20,24 +20,26 @@ public class Atendente extends Funcionario implements Gratificacao {
 
 	public static void calculadorGratificacao(String loja) {
 		try {
-		List<Double> percentual = lojas.get(loja);
-		initLojas();
-		
-		if(percentual != null) {
-			lista.sort(Comparator.comparing(Atendente::getVendasSemana));
-			Collections.reverse(lista);
-			lista.get(0).setGratificacaoSemana(lista.get(0).getVendasSemana() * percentual.get(0));
-			lista.get(1).setGratificacaoSemana(lista.get(1).getVendasSemana() * percentual.get(1));
-			lista.get(2).setGratificacaoSemana(lista.get(2).getVendasSemana() * percentual.get(2));
+			List<Double> percentual = lojas.get(loja);
+			initLojas();
 			
-			lista.subList(3, lista.size()).forEach(atendentes -> 
-				atendentes.setGratificacaoSemana(atendentes.getVendasSemana() * percentual.get(3)));
-		} else {
-			throw new Excepcion("É necessário que informe o nome da Loja, Mundo, Sonho, Vovo ou Lapis, para poder usar a regra de gratificação correta");
+			if(percentual != null) {
+				lista.sort(Comparator.comparing(Atendente::getVendasSemana));
+				Collections.reverse(lista);
+				lista.get(0).setGratificacaoSemana(lista.get(0).getVendasSemana() * percentual.get(0));
+				lista.get(1).setGratificacaoSemana(lista.get(1).getVendasSemana() * percentual.get(1));
+				lista.get(2).setGratificacaoSemana(lista.get(2).getVendasSemana() * percentual.get(2));
+				
+				lista.subList(3, lista.size()).forEach(atendentes -> 
+					atendentes.setGratificacaoSemana(atendentes.getVendasSemana() * percentual.get(3)));
+			} else {
+				throw new Exception("É necessário que informe o nome da Loja, Mundo, Sonho, Vovó ou Lápis, para poder usar a regra de gratificação correta");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
-	} catch(Exception e) {
-		e.printStackTrace();
 	}
+
 
 	public static void ordenarVendaTotal() {
 		lista.sort(Comparator.comparing(Atendente::getVendasTotal));

@@ -14,10 +14,12 @@ public class MundoCalculadoraGratificacao implements CalculadorGratificacao {
 	private static final Double SEGUNDO_COLOCADO = 0.1;
 	private static final Double TERCEIRO_COLOCADO = 0.1;
 	private static final Double DEMAIS_COLOCADOS = 0.1;
-
+	private List<Atendente> gratificacoes = new ArrayList<>();
+	
 	@Override
-	public void calcularGratificacao() {
-		List<Atendente> gratificacoes = new ArrayList<>();
+	public void calcularGratificacao(List<Atendente> atendentes) {
+		
+		gratificacoes = atendentes;
 
 		gratificacoes.sort(Comparator.comparing(Atendente::getVendasSemana));
 		Collections.reverse(gratificacoes);
@@ -26,9 +28,17 @@ public class MundoCalculadoraGratificacao implements CalculadorGratificacao {
 		gratificacoes.get(2).setGratificacaoSemana(gratificacoes.get(2).getVendasSemana() * TERCEIRO_COLOCADO);
 
 		gratificacoes.subList(3, gratificacoes.size()).forEach(
-				atendentes -> atendentes.setGratificacaoSemana(atendentes.getVendasSemana() * DEMAIS_COLOCADOS));
+				atendente -> atendente.setGratificacaoSemana(atendente.getVendasSemana() * DEMAIS_COLOCADOS));
 		
-
+	}
+	
+	public void ordenarVendaTotal() {
+		gratificacoes.sort(Comparator.comparing(Atendente::getVendasTotal));
+		Collections.reverse(gratificacoes);
+	}
+	
+	public void imprimeResultado() {
+		gratificacoes.forEach(System.out::println);
 	}
 
 }

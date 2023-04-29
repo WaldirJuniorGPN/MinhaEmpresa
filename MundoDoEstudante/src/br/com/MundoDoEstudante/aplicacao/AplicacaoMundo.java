@@ -22,7 +22,7 @@ public class AplicacaoMundo {
 		Atendente natiele = new Atendente("Natiele");
 		Atendente sara = new Atendente("Sara");
 		
-		Atendente.calculadorGratificacao("Mundo");
+		Atendente.calculadorGratificacao();
 		
 		sara.setVendasPrimeiraSemana(1266.70);
 		natiele.setVendasPrimeiraSemana(7607.06);

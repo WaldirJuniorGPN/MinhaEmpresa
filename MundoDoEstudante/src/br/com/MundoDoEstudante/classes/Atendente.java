@@ -13,7 +13,7 @@ import br.com.MundoDoEstudante.classes.calculadoraGratificacao.VovoCalculadoraGr
 
 public class Atendente extends Funcionario implements Gratificacao {
 
-	private double vendasSemanais;
+	private double vendasSemanais = 0;
 	private double vendasTotal;
 	private double gratificacaoSemanal;
 	private double gratificacaoTotal;
@@ -37,8 +37,9 @@ public class Atendente extends Funcionario implements Gratificacao {
 
 	@Override
 	public void setGratificacaoSemana(double valor) {
+		this.vendasSemanais = 0;
 		this.gratificacaoSemanal = valor;
-		this.gratificacaoTotal += valor;
+		this.gratificacaoTotal += valor;    
 
 	}
 
@@ -59,7 +60,6 @@ public class Atendente extends Funcionario implements Gratificacao {
 		if (valor < 0) {
 			throw new IllegalArgumentException("O valor da venda não pode ser negativo");
 		}
-
 		this.vendasSemanais = valor;
 		this.vendasTotal += valor;
 	}
@@ -109,11 +109,6 @@ public class Atendente extends Funcionario implements Gratificacao {
 
 	}
 
-	public static void calcularGratificacao() {
-		new MundoCalculadoraGratificacao(lista);
-		
-	}
-	
 	public static void ordenarVendaTotal() {
 		lista.sort(Comparator.comparing(Atendente::getVendasTotal));
 		Collections.reverse(lista);

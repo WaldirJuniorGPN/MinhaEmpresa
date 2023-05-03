@@ -20,66 +20,67 @@ public class AplicacaoLapis {
 		
 		Atendente.calcularGratificacao(Lojas.LAPIS);
 		
-		rodrigues.setVendasPrimeiraSemana(2832.75);
-		erik.setVendasPrimeiraSemana(3259.36);
-		val.setVendasPrimeiraSemana(7354.02);
-		cintiane.setVendasPrimeiraSemana(647.13);
-		lincoln.setVendasPrimeiraSemana(5069.22);
-		loja.setVendasPrimeiraSemana(3828.81 + 1271.76);
-		gabriel.setVendasPrimeiraSemana(1839.17);
-		guilherme.setVendasPrimeiraSemana(2926.29);
-		
+		rodrigues.setVendasPrimeiraSemana(1420.10);
+		erik.setVendasPrimeiraSemana(961.74);
+		val.setVendasPrimeiraSemana(2561.47);
+		cintiane.setVendasPrimeiraSemana(469.28);
+		lincoln.setVendasPrimeiraSemana(1267.77);
+		loja.setVendasPrimeiraSemana(656.69);
+		gabriel.setVendasPrimeiraSemana(632.93);
+		guilherme.setVendasPrimeiraSemana(0);
+
 		Atendente.calcularGratificacao(Lojas.LAPIS);
-		
+
 		jhon.setVendasSegundaSemana(0);
-		jose.setVendasSegundaSemana(0);
-		cintiane.setVendasSegundaSemana(1919.74);
-		lincoln.setVendasSegundaSemana(5861.36);
-		val.setVendasSegundaSemana(13162.80);
-		erik.setVendasSegundaSemana(3396.00);
-		loja.setVendasSegundaSemana(5046.42);
-		gabriel.setVendasSegundaSemana(5268.06);
-		guilherme.setVendasSegundaSemana(6057.32);
-		rodrigues.setVendasSegundaSemana(4205.93);
-		
+		jose.setVendasSegundaSemana(33.29);
+		cintiane.setVendasSegundaSemana(0);
+		lincoln.setVendasSegundaSemana(6876.54);
+		val.setVendasSegundaSemana(12438.49);
+		erik.setVendasSegundaSemana(7753.85);
+		loja.setVendasSegundaSemana(4087.31);
+		gabriel.setVendasSegundaSemana(660.09);
+		guilherme.setVendasSegundaSemana(0);
+		rodrigues.setVendasSegundaSemana(3608.48);
+
 		Atendente.calcularGratificacao(Lojas.LAPIS);
-		
+
 		jhon.setVendasTerceiraSemana(0);
-		jose.setVendasTerceiraSemana(0);
-		cintiane.setVendasTerceiraSemana(1511.73);
-		lincoln.setVendasTerceiraSemana(7738.51);
-		val.setVendasTerceiraSemana(12543.55);
-		erik.setVendasTerceiraSemana(2179.07);
-		loja.setVendasTerceiraSemana(4906.21);
-		gabriel.setVendasTerceiraSemana(5315.16);
-		guilherme.setVendasTerceiraSemana(2228.95);
-		rodrigues.setVendasTerceiraSemana(4355.42);
-		
+		jose.setVendasTerceiraSemana(20.90);
+		cintiane.setVendasTerceiraSemana(0);
+		lincoln.setVendasTerceiraSemana(5487.24);
+		val.setVendasTerceiraSemana(12145.17);
+		erik.setVendasTerceiraSemana(5017.44);
+		loja.setVendasTerceiraSemana(2730.03);
+		gabriel.setVendasTerceiraSemana(0);
+		guilherme.setVendasTerceiraSemana(787.10);
+		rodrigues.setVendasTerceiraSemana(4133.65);
+
 		Atendente.calcularGratificacao(Lojas.LAPIS);
-		
+
 		jhon.setVendasQuartaSemana(0);
-		jose.setVendasQuartaSemana(0);
-		cintiane.setVendasQuartaSemana(2121.96);
-		lincoln.setVendasQuartaSemana(5536.44);
-		val.setVendasQuartaSemana(10936.55);
-		erik.setVendasQuartaSemana(6233.35);
-		loja.setVendasQuartaSemana(2304.55);
-		gabriel.setVendasQuartaSemana(3685.74);
-		guilherme.setVendasQuartaSemana(0);
-		rodrigues.setVendasQuartaSemana(3927.86);
-		
+		jose.setVendasQuartaSemana(25.90);
+		cintiane.setVendasQuartaSemana(0);
+		lincoln.setVendasQuartaSemana(3106.83);
+		val.setVendasQuartaSemana(6996.61);
+		erik.setVendasQuartaSemana(3016.37);
+		loja.setVendasQuartaSemana(2227.99);
+		gabriel.setVendasQuartaSemana(0);
+		guilherme.setVendasQuartaSemana(2694.94);
+		rodrigues.setVendasQuartaSemana(3108.09);
+
 		Atendente.calcularGratificacao(Lojas.LAPIS);
-		
+
 		jhon.setVendasQuintaSemana(0);
 		jose.setVendasQuintaSemana(0);
-		cintiane.setVendasQuintaSemana(1438.62);
-		lincoln.setVendasQuintaSemana(4625.86);
-		val.setVendasQuintaSemana(8249.70);
-		erik.setVendasQuintaSemana(3803.60);
-		loja.setVendasQuintaSemana(1608.60);
-		gabriel.setVendasQuintaSemana(3358.63);
-		guilherme.setVendasQuintaSemana(0);
-		rodrigues.setVendasQuintaSemana(5172.51);
+		cintiane.setVendasQuintaSemana(0);
+		lincoln.setVendasQuintaSemana(4396.33);
+		val.setVendasQuintaSemana(8266.64);
+		erik.setVendasQuintaSemana(4012.73);
+		loja.setVendasQuintaSemana(1359.95);
+		gabriel.setVendasQuintaSemana(0);
+		guilherme.setVendasQuintaSemana(3079.85);
+		rodrigues.setVendasQuintaSemana(2421.45);
+
 		
 		Atendente.calcularGratificacao(Lojas.LAPIS);
 		

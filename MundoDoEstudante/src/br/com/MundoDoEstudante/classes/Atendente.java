@@ -18,6 +18,7 @@ public class Atendente extends Funcionario implements Gratificacao {
 	private double gratificacaoSemanal;
 	private double gratificacaoTotal;
 	static private List<Atendente> lista = new ArrayList<>();
+	private AtendenteDAO atendenteDAO = new AtendenteDAO();
 
 	public void cadastra(Atendente atende) {
 		lista.add(atende);
@@ -26,6 +27,7 @@ public class Atendente extends Funcionario implements Gratificacao {
 	public Atendente(String nome) {
 		super(nome);
 		lista.add(this);
+		atendenteDAO.inserirAtendenteBanco(nome);
 	}
 	
 	public Atendente() {}
@@ -39,7 +41,8 @@ public class Atendente extends Funcionario implements Gratificacao {
 	public void setGratificacaoSemana(double valor) {
 		this.vendasSemanais = 0;
 		this.gratificacaoSemanal = valor;
-		this.gratificacaoTotal += valor;    
+		this.gratificacaoTotal += valor;
+		atendenteDAO.inserirValoresBanco(this.vendasTotal, this.gratificacaoTotal);
 
 	}
 

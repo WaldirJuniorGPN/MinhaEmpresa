@@ -1,5 +1,6 @@
 package br.com.MundoDoEstudante.classes.calculadoraGratificacao;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,12 +21,12 @@ public class CalculadorGratificacao {
 		
 		this.gratificacoes.sort(Comparator.comparing(Atendente::getVendasSemana));
 		Collections.reverse(gratificacoes);
-		this.gratificacoes.get(0).setGratificacaoSemana(gratificacoes.get(0).getVendasSemana() * percentual1);
-		this.gratificacoes.get(1).setGratificacaoSemana(gratificacoes.get(1).getVendasSemana() * percentual2);
-		this.gratificacoes.get(2).setGratificacaoSemana(gratificacoes.get(2).getVendasSemana() * percentual3);
+		this.gratificacoes.get(0).setGratificacaoSemana(gratificacoes.get(0).getVendasSemana().multiply(BigDecimal.valueOf(percentual1)));
+		this.gratificacoes.get(1).setGratificacaoSemana(gratificacoes.get(1).getVendasSemana().multiply(BigDecimal.valueOf(percentual2)));
+		this.gratificacoes.get(2).setGratificacaoSemana(gratificacoes.get(2).getVendasSemana().multiply(BigDecimal.valueOf(percentual3)));
 
 		this.gratificacoes.subList(3, gratificacoes.size()).forEach(
-				atendente -> atendente.setGratificacaoSemana(atendente.getVendasSemana() * percentual4));
+				atendente -> atendente.setGratificacaoSemana(atendente.getVendasSemana().multiply(BigDecimal.valueOf(percentual4))));
 		
 		return this.gratificacoes;
 	}

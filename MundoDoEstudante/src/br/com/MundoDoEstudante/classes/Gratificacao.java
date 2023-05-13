@@ -1,10 +1,10 @@
 package br.com.MundoDoEstudante.classes;
 
+import java.math.BigDecimal;
+
 public interface Gratificacao {
 	
-
-	double getGraficacao();
-	void setGratificacaoSemana(double valor);
-	
+	BigDecimal getGraficacao();
+	void setGratificacaoSemana(BigDecimal valor);
 
 }

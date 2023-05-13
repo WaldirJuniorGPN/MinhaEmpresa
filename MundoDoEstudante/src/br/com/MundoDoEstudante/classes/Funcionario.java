@@ -1,9 +1,11 @@
 package br.com.MundoDoEstudante.classes;
 
+import java.math.BigDecimal;
+
 public abstract class Funcionario {
 	
 	private String nome;
-	private double salario;
+	private BigDecimal salario;
 	
 	public Funcionario(String nome) {
 		this.nome = nome;
@@ -15,7 +17,7 @@ public abstract class Funcionario {
 		return this.nome;
 	}
 	
-	public double getSalario() {
+	public BigDecimal getSalario() {
 		return this.salario;
 	}
 	
@@ -23,7 +25,7 @@ public abstract class Funcionario {
 		this.nome = nome;
 	}
 	
-	public void setSalario(double salario) {
+	public void setSalario(BigDecimal salario) {
 		this.salario = salario;
 	}
 }

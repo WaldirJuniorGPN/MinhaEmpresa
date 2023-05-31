@@ -11,7 +11,6 @@ import br.com.MundoDoEstudante.classes.Atendente;
 public class CalculadorGratificacao {
 	
 	
-	
 	private List<Atendente> gratificacoes = new ArrayList<>();
 	
 	

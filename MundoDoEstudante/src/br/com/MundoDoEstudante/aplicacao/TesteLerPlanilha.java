@@ -1,6 +1,5 @@
 package br.com.MundoDoEstudante.aplicacao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.MundoDoEstudante.classes.Atendente;

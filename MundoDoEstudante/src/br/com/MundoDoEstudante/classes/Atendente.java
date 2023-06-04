@@ -6,10 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
-import br.com.MundoDoEstudante.classes.calculadoraGratificacao.LapisCalculadoraGratificacao;
-import br.com.MundoDoEstudante.classes.calculadoraGratificacao.MundoCalculadoraGratificacao;
-import br.com.MundoDoEstudante.classes.calculadoraGratificacao.SonhoCalculadoraGratificacao;
-import br.com.MundoDoEstudante.classes.calculadoraGratificacao.VovoCalculadoraGratificacao;
+import br.com.MundoDoEstudante.classes.calculadoraGratificacao.CalculadorGratificacao;
 
 public class Atendente extends Funcionario implements Gratificacao {
 
@@ -18,16 +15,15 @@ public class Atendente extends Funcionario implements Gratificacao {
 	private double gratificacaoSemanal;
 	private double gratificacaoTotal;
 	static private List<Atendente> lista = new ArrayList<>();
-	private AtendenteDAO atendenteDAO = new AtendenteDAO();
+	private static CalculadorGratificacao calculador = new CalculadorGratificacao();
 
 	public void cadastra(Atendente atende) {
-		lista.add(atende);
+		calculador.inspecionarAtendentes(this);
 	}
 
 	public Atendente(String nome) {
 		super(nome);
-		lista.add(this);
-		atendenteDAO.inserirAtendenteBanco(nome);
+		calculador.inspecionarAtendentes(this);
 	}
 	
 	public Atendente() {}
@@ -42,7 +38,6 @@ public class Atendente extends Funcionario implements Gratificacao {
 		this.vendasSemanais = 0;
 		this.gratificacaoSemanal = valor;
 		this.gratificacaoTotal += valor;
-		atendenteDAO.inserirValoresBanco(this.vendasTotal, this.gratificacaoTotal);
 
 	}
 
@@ -93,23 +88,7 @@ public class Atendente extends Funcionario implements Gratificacao {
 	}
 
 	public static void calcularGratificacao(Lojas loja) {
-		switch (loja) {
-		case MUNDO:
-			lista = (List<Atendente>) new MundoCalculadoraGratificacao(lista).calcularGratificacao();
-			break;
-		case SONHO:
-			lista = (List<Atendente>) new SonhoCalculadoraGratificacao(lista).calcularGratificacao();
-			break;
-		case LAPIS:
-			lista = (List<Atendente>) new LapisCalculadoraGratificacao(lista).calcularGratificacao();
-			break;
-		case VOVO:
-			lista = (List<Atendente>) new VovoCalculadoraGratificacao(lista).calcularGratificacao();
-			break;
-		default:
-			throw new IllegalArgumentException("É necessário informar uma loja válida");
-		}
-
+		lista = calculador.calcularPercentuais(loja);
 	}
 
 	public static void ordenarVendaTotal() {

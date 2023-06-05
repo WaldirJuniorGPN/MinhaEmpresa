@@ -6,10 +6,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import br.com.MundoDoEstudante.classes.calculadoraGratificacao.CalculadorGratificacao;
 
+@Entity
+@Table(name = "atendentes")
 public class Atendente extends Funcionario implements Gratificacao {
-
+	
 	private double vendasSemanais = 0;
 	private double vendasTotal;
 	private double gratificacaoSemanal;

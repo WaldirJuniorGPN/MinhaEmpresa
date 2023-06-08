@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -16,8 +17,12 @@ import br.com.MundoDoEstudante.classes.calculadoraGratificacao.CalculadorGratifi
 public class Atendente extends Funcionario implements Gratificacao {
 	
 	private double vendasSemanais = 0;
+	
+	@Column(name = "vendas", updatable = true, scale = 2)
 	private double vendasTotal;
 	private double gratificacaoSemanal;
+	
+	@Column(name = "gratificacao", updatable = true, scale = 2)
 	private double gratificacaoTotal;
 	static private List<Atendente> lista = new ArrayList<>();
 	private static CalculadorGratificacao calculador = new CalculadorGratificacao();
@@ -45,13 +50,13 @@ public class Atendente extends Funcionario implements Gratificacao {
 		this.gratificacaoTotal += valor;
 
 	}
-
+	
 	public double getGratificacaoTotal() {
 		return this.gratificacaoTotal;
 	}
 
 	public double getVendasTotal() {
-		return this.vendasTotal;
+		return AtendenteDAO.getVendasTotal(this);
 	}
 
 	public double getVendasSemana() {

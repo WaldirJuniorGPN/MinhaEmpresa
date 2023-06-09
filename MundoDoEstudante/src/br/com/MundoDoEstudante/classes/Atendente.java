@@ -100,7 +100,7 @@ public class Atendente extends Funcionario implements Gratificacao {
 		}
 		this.vendasSemanais = valor;
 		this.vendasTotal = this.vendasTotal.add(valor);
-		AtendenteDAO.adicionarVendasTotal(this, valor);
+//		AtendenteDAO.adicionarVendasTotal(this, valor);
 	}
 	
 	public void setVendasTotal(BigDecimal vendasTotal) {
@@ -140,7 +140,7 @@ public class Atendente extends Funcionario implements Gratificacao {
 	public static void calcularGratificacao(Lojas loja) {
 		lista = calculador.calcularPercentuais(loja);
 	}
-
+	
 	public static void ordenarVendaTotal() {
 		lista.sort(Comparator.comparing(Atendente::getVendasTotal));
 		Collections.reverse(lista);

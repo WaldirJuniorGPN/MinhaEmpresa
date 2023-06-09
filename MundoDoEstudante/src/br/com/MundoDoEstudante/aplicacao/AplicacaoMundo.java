@@ -100,7 +100,7 @@ public class AplicacaoMundo {
         thaina.setVendasQuintaSemana(BigDecimal.valueOf(6676.59));
 
         Atendente.calcularGratificacao(Lojas.MUNDO);
-
+        
         Atendente.ordenarVendaTotal();
 
         Atendente.imprimirResultado();

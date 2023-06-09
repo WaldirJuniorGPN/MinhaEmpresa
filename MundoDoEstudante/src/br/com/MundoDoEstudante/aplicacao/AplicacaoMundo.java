@@ -8,7 +8,9 @@ import br.com.MundoDoEstudante.classes.Lojas;
 public class AplicacaoMundo {
 
     public static void main(String[] args) {
-
+    	
+    	Atendente.limparTabela();
+    	
         Atendente lucas = new Atendente("Lucas");
         Atendente victor = new Atendente("Victor");
         Atendente loja = new Atendente("Loja");
@@ -21,6 +23,7 @@ public class AplicacaoMundo {
         Atendente costa = new Atendente("Costa");
         Atendente kawan = new Atendente("Kawan");
         Atendente natiele = new Atendente("Natiele");
+        
 
         Atendente.calcularGratificacao(Lojas.MUNDO);
 

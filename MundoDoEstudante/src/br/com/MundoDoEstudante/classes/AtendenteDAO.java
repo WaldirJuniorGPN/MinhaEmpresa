@@ -59,4 +59,54 @@ public class AtendenteDAO {
 		}
 	}
 
+	public static void limarTabela() {
+		
+		if(tabelaExiste()) {
+		
+		EntityManager entityManager = JpaUtil.getEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+
+		try {
+			transaction.begin();
+			entityManager.createQuery("DROP TABLE Atendente").executeUpdate();
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction != null && transaction.isActive()) {
+				transaction.rollback();
+			}
+			throw new RuntimeException("Erro ao limpar dados na tabela" + e.getMessage(), e);
+		} finally {
+			entityManager.close();
+		}
+		} else {
+			System.out.println("Não existe tabela Atendente no banco de dados");
+		}
+	}
+	
+	private static boolean tabelaExiste() {
+		EntityManager entityManager = JpaUtil.getEntityManager();
+		try {
+			entityManager.createNativeQuery("SELECT 1 FROM Atendente").getSingleResult();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public static void adicionarVendasTotal(Atendente atendente, BigDecimal vendasTotal) {
+		EntityManager entityManager = JpaUtil.getEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+		
+		try {
+			transaction.begin();
+			Atendente atendenteAtualizado = entityManager.find(Atendente.class, atendente.getId());
+			atendenteAtualizado.setVendasTotal(atendenteAtualizado.getVendasTotal().add(vendasTotal));
+			transaction.commit();
+		} catch (Exception e) {
+			throw new RuntimeException("Erro ao adicionar vendas totais " + e.getMessage(), e);
+		} finally {
+			JpaUtil.closeEntityManager();
+		}
+	}
+
 }

@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import br.com.MundoDoEstudante.classes.calculadoraGratificacao.CalculadorGratificacao;
 
@@ -23,16 +24,23 @@ public class Atendente extends Funcionario implements Gratificacao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private BigDecimal vendasSemanais = BigDecimal.ZERO;
-	
-	@Column(name = "vendas", updatable = true, scale = 2)
-	private BigDecimal vendasTotal = BigDecimal.ZERO;
-	private BigDecimal gratificacaoSemanal = BigDecimal.ZERO;
 	
 	@Column(name = "gratificacao", updatable = true, scale = 2, nullable = true)
 	private BigDecimal gratificacaoTotal = BigDecimal.ZERO;
+
+	@Column(name = "vendas", updatable = true, scale = 2)
+	private BigDecimal vendasTotal = BigDecimal.ZERO;
+
+	@Transient
+	private BigDecimal vendasSemanais = BigDecimal.ZERO;
+	
+	@Transient
+	private BigDecimal gratificacaoSemanal = BigDecimal.ZERO;
+	
 	static private List<Atendente> lista = new ArrayList<>();
+	
 	private static CalculadorGratificacao calculador = new CalculadorGratificacao();
+	
 	private static AtendenteObserver observer = new AtendenteObserver();
 
 	public void cadastra(Atendente atende) {
@@ -92,7 +100,11 @@ public class Atendente extends Funcionario implements Gratificacao {
 		}
 		this.vendasSemanais = valor;
 		this.vendasTotal = this.vendasTotal.add(valor);
-		
+		AtendenteDAO.adicionarVendasTotal(this, valor);
+	}
+	
+	public void setVendasTotal(BigDecimal vendasTotal) {
+		this.vendasTotal = vendasTotal;
 	}
 
 	public void setVendasSegundaSemana(BigDecimal valor) {
@@ -111,6 +123,7 @@ public class Atendente extends Funcionario implements Gratificacao {
 		this.setVendasPrimeiraSemana(valor);
 	}
 
+	
 	@Override
 	public String toString() {
 
@@ -118,6 +131,10 @@ public class Atendente extends Funcionario implements Gratificacao {
 				this.getNome(), this.getVendasTotal(), this.getGratificacaoTotal());
 		return novaString;
 
+	}
+	
+	public static void limparTabela() {
+		AtendenteDAO.limarTabela();
 	}
 
 	public static void calcularGratificacao(Lojas loja) {

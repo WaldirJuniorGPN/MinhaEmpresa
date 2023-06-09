@@ -1,5 +1,6 @@
 package br.com.MundoDoEstudante.classes.calculadoraGratificacao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import br.com.MundoDoEstudante.classes.Atendente;
@@ -14,8 +15,8 @@ public class VovoCalculadoraGratificacao extends CalculadorGratificacao{
 	
 	public List<Atendente> calcularGratificacao() {
 		
-		return super.calcularGratificacao(PRIMEIRO_COLOCADO, SEGUNDO_COLOCADO, TERCEIRO_COLOCADO, DEMAIS_COLOCADOS);
-		
+		return super.calcularGratificacao(BigDecimal.valueOf(PRIMEIRO_COLOCADO), BigDecimal.valueOf(SEGUNDO_COLOCADO),
+				BigDecimal.valueOf(TERCEIRO_COLOCADO), BigDecimal.valueOf(DEMAIS_COLOCADOS));
 	}
 
 }

@@ -1,7 +1,8 @@
 package br.com.MundoDoEstudante.classes.calculadoraGratificacao;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -19,19 +20,19 @@ public class CalculadorGratificacao {
 	}
 	
 	
-	protected List<Atendente> calcularGratificacao(double percentual1, double percentual2, double percentual3, double percentual4) {
-		
-		gratificacoes.sort(Comparator.comparing(Atendente::getVendasSemana));
-		Collections.reverse(gratificacoes);
-		gratificacoes.get(0).setGratificacaoSemana(gratificacoes.get(0).getVendasSemana() * percentual1);
-		gratificacoes.get(1).setGratificacaoSemana(gratificacoes.get(1).getVendasSemana() * percentual2);
-		gratificacoes.get(2).setGratificacaoSemana(gratificacoes.get(2).getVendasSemana() * percentual3);
+	protected List<Atendente> calcularGratificacao(BigDecimal percentual1, BigDecimal percentual2, BigDecimal percentual3, BigDecimal percentual4) {
+	    gratificacoes.sort(Comparator.comparing(Atendente::getVendasSemana).reversed());
+	    gratificacoes.get(0).setGratificacaoSemana(gratificacoes.get(0).getVendasSemana().multiply(percentual1).setScale(2, RoundingMode.HALF_UP));
+	    gratificacoes.get(1).setGratificacaoSemana(gratificacoes.get(1).getVendasSemana().multiply(percentual2).setScale(2, RoundingMode.HALF_UP));
+	    gratificacoes.get(2).setGratificacaoSemana(gratificacoes.get(2).getVendasSemana().multiply(percentual3).setScale(2, RoundingMode.HALF_UP));
 
-		gratificacoes.subList(3, gratificacoes.size()).forEach(
-				atendente -> atendente.setGratificacaoSemana(atendente.getVendasSemana() * percentual4));
-		
-		return gratificacoes;
+	    gratificacoes.subList(3, gratificacoes.size()).forEach(
+	        atendente -> atendente.setGratificacaoSemana(atendente.getVendasSemana().multiply(percentual4).setScale(2, RoundingMode.HALF_UP))
+	    );
+	    
+	    return gratificacoes;
 	}
+
 	
 	public List<Atendente> calcularPercentuais(Lojas loja){
 		switch (loja) {

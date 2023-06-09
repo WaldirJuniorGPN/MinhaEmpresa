@@ -1,5 +1,6 @@
 package br.com.MundoDoEstudante.classes;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -8,6 +9,9 @@ import java.util.Locale;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import br.com.MundoDoEstudante.classes.calculadoraGratificacao.CalculadorGratificacao;
@@ -16,16 +20,20 @@ import br.com.MundoDoEstudante.classes.calculadoraGratificacao.CalculadorGratifi
 @Table(name = "atendentes")
 public class Atendente extends Funcionario implements Gratificacao {
 	
-	private double vendasSemanais = 0;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	private BigDecimal vendasSemanais = BigDecimal.ZERO;
 	
 	@Column(name = "vendas", updatable = true, scale = 2)
-	private double vendasTotal;
-	private double gratificacaoSemanal;
+	private BigDecimal vendasTotal = BigDecimal.ZERO;
+	private BigDecimal gratificacaoSemanal = BigDecimal.ZERO;
 	
-	@Column(name = "gratificacao", updatable = true, scale = 2)
-	private double gratificacaoTotal;
+	@Column(name = "gratificacao", updatable = true, scale = 2, nullable = true)
+	private BigDecimal gratificacaoTotal = BigDecimal.ZERO;
 	static private List<Atendente> lista = new ArrayList<>();
 	private static CalculadorGratificacao calculador = new CalculadorGratificacao();
+	private static AtendenteObserver observer = new AtendenteObserver();
 
 	public void cadastra(Atendente atende) {
 		calculador.inspecionarAtendentes(this);
@@ -34,57 +42,72 @@ public class Atendente extends Funcionario implements Gratificacao {
 	public Atendente(String nome) {
 		super(nome);
 		calculador.inspecionarAtendentes(this);
+		observer.inspecionarAtendentes(this);
+		this.gratificacaoTotal = BigDecimal.ZERO;
 	}
 	
 	public Atendente() {}
 
 	@Override
-	public double getGraficacao() {
+	public BigDecimal getGraficacao() {
 		return this.gratificacaoSemanal;
 	}
 
 	@Override
-	public void setGratificacaoSemana(double valor) {
-		this.vendasSemanais = 0;
-		this.gratificacaoSemanal = valor;
-		this.gratificacaoTotal += valor;
+	public void setGratificacaoSemana(BigDecimal valor) {
+		this.vendasSemanais = BigDecimal.ZERO;
+		this.setGraficacaoSemanal(valor);
+		AtendenteDAO.salvarGratificacao(this, valor);
 
 	}
 	
-	public double getGratificacaoTotal() {
+	public void setGraficacaoSemanal(BigDecimal valor) {
+		this.gratificacaoSemanal = valor;
+	}
+	
+	public void setGratificacaoTotal(BigDecimal valor) {
+		this.gratificacaoTotal = valor;
+	}
+	
+	public long getId() {
+		return this.id;
+	}
+	
+	public BigDecimal getGratificacaoTotal() {
 		return this.gratificacaoTotal;
 	}
 
-	public double getVendasTotal() {
+	public BigDecimal getVendasTotal() {
 		return AtendenteDAO.getVendasTotal(this);
 	}
 
-	public double getVendasSemana() {
+	public BigDecimal getVendasSemana() {
 		return this.vendasSemanais;
 	}
 
-	public void setVendasPrimeiraSemana(double valor) {
+	public void setVendasPrimeiraSemana(BigDecimal valor) {
 
-		if (valor < 0) {
+		if (valor.compareTo(BigDecimal.ZERO) < 0) {
 			throw new IllegalArgumentException("O valor da venda não pode ser negativo");
 		}
 		this.vendasSemanais = valor;
-		this.vendasTotal += valor;
+		this.vendasTotal = this.vendasTotal.add(valor);
+		
 	}
 
-	public void setVendasSegundaSemana(double valor) {
+	public void setVendasSegundaSemana(BigDecimal valor) {
 		this.setVendasPrimeiraSemana(valor);
 	}
 
-	public void setVendasTerceiraSemana(double valor) {
+	public void setVendasTerceiraSemana(BigDecimal valor) {
 		this.setVendasPrimeiraSemana(valor);
 	}
 
-	public void setVendasQuartaSemana(double valor) {
+	public void setVendasQuartaSemana(BigDecimal valor) {
 		this.setVendasPrimeiraSemana(valor);
 	}
 
-	public void setVendasQuintaSemana(double valor) {
+	public void setVendasQuintaSemana(BigDecimal valor) {
 		this.setVendasPrimeiraSemana(valor);
 	}
 

@@ -1,20 +1,17 @@
 package br.com.MundoDoEstudante.classes;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class Funcionario {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	@Column(name = "nome_atendente")
 	private String nome;
 	@Column(scale = 2)
-	private double salario;
+	private BigDecimal salario;
 	
 	public Funcionario(String nome) {
 		this.nome = nome;
@@ -26,7 +23,7 @@ public abstract class Funcionario {
 		return this.nome;
 	}
 	
-	public double getSalario() {
+	public BigDecimal getSalario() {
 		return this.salario;
 	}
 	
@@ -34,7 +31,7 @@ public abstract class Funcionario {
 		this.nome = nome;
 	}
 	
-	public void setSalario(double salario) {
+	public void setSalario(BigDecimal salario) {
 		this.salario = salario;
 	}
 }

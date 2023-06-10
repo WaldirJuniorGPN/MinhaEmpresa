@@ -61,21 +61,6 @@ public class Atendente extends Funcionario implements Gratificacao {
 		return this.gratificacaoSemanal;
 	}
 
-	@Override
-	public void setGratificacaoSemana(BigDecimal valor) {
-		this.vendasSemanais = BigDecimal.ZERO;
-		this.setGraficacaoSemanal(valor);
-		AtendenteDAO.salvarGratificacao(this, valor);
-
-	}
-	
-	public void setGraficacaoSemanal(BigDecimal valor) {
-		this.gratificacaoSemanal = valor;
-	}
-	
-	public void setGratificacaoTotal(BigDecimal valor) {
-		this.gratificacaoTotal = valor;
-	}
 	
 	public long getId() {
 		return this.id;
@@ -91,6 +76,22 @@ public class Atendente extends Funcionario implements Gratificacao {
 
 	public BigDecimal getVendasSemana() {
 		return this.vendasSemanais;
+	}
+
+	@Override
+	public void setGratificacaoSemana(BigDecimal valor) {
+		this.vendasSemanais = BigDecimal.ZERO;
+		this.setGraficacaoSemanal(valor);
+		AtendenteDAO.salvarGratificacao(this, valor);
+		
+	}
+	
+	public void setGraficacaoSemanal(BigDecimal valor) {
+		this.gratificacaoSemanal = valor;
+	}
+	
+	public void setGratificacaoTotal(BigDecimal valor) {
+		this.gratificacaoTotal = valor;
 	}
 
 	public void setVendasPrimeiraSemana(BigDecimal valor) {

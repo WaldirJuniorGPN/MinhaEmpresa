@@ -43,10 +43,6 @@ public class Atendente extends Funcionario implements Gratificacao {
 	
 	private static AtendenteObserver observer = new AtendenteObserver();
 
-	public void cadastra(Atendente atende) {
-		calculador.inspecionarAtendentes(this);
-	}
-
 	public Atendente(String nome) {
 		super(nome);
 		calculador.inspecionarAtendentes(this);
@@ -71,7 +67,7 @@ public class Atendente extends Funcionario implements Gratificacao {
 	}
 
 	public BigDecimal getVendasTotal() {
-		return AtendenteDAO.getVendasTotal(this);
+		return this.vendasTotal;
 	}
 
 	public BigDecimal getVendasSemana() {
@@ -82,8 +78,12 @@ public class Atendente extends Funcionario implements Gratificacao {
 	public void setGratificacaoSemana(BigDecimal valor) {
 		this.vendasSemanais = BigDecimal.ZERO;
 		this.setGraficacaoSemanal(valor);
-		AtendenteDAO.salvarGratificacao(this, valor);
+		this.gratificacaoTotal = this.gratificacaoTotal.add(valor);
 		
+	}
+	
+	public static void salvarGratificacaoNoBanco() {
+		lista.forEach(atendente -> AtendenteDAO.salvarGratificacao(atendente, atendente.getGratificacaoTotal()));
 	}
 	
 	public void setGraficacaoSemanal(BigDecimal valor) {
@@ -93,6 +93,10 @@ public class Atendente extends Funcionario implements Gratificacao {
 	public void setGratificacaoTotal(BigDecimal valor) {
 		this.gratificacaoTotal = valor;
 	}
+	
+	public static void adicionarVendasNoBanco() {
+		lista.forEach(atendente -> AtendenteDAO.adicionarVendasTotal(atendente, atendente.getVendasTotal()));
+	}
 
 	public void setVendasPrimeiraSemana(BigDecimal valor) {
 
@@ -101,7 +105,6 @@ public class Atendente extends Funcionario implements Gratificacao {
 		}
 		this.vendasSemanais = valor;
 		this.vendasTotal = this.vendasTotal.add(valor);
-//		AtendenteDAO.adicionarVendasTotal(this, valor);
 	}
 	
 	public void setVendasTotal(BigDecimal vendasTotal) {
@@ -135,7 +138,7 @@ public class Atendente extends Funcionario implements Gratificacao {
 	}
 	
 	public static void limparTabela() {
-		AtendenteDAO.limarTabela();
+		AtendenteDAO.limparTabela();
 	}
 
 	public static void calcularGratificacao(Lojas loja) {

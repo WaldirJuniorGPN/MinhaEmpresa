@@ -1,4 +1,4 @@
-package br.com.MundoDoEstudante.classes;
+package br.com.MundoDoEstudante.modelos;
 
 import java.math.BigDecimal;
 

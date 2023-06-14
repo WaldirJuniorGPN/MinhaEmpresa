@@ -3,7 +3,7 @@ package br.com.MundoDoEstudante.classes.calculadoraGratificacao;
 import java.math.BigDecimal;
 import java.util.List;
 
-import br.com.MundoDoEstudante.classes.Atendente;
+import br.com.MundoDoEstudante.modelos.Atendente;
 
 public class SonhoCalculadoraGratificacao extends CalculadorGratificacao {
 

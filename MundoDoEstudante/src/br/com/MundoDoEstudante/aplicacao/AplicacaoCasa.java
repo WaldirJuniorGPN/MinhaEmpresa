@@ -2,8 +2,8 @@ package br.com.MundoDoEstudante.aplicacao;
 
 import java.math.BigDecimal;
 
-import br.com.MundoDoEstudante.classes.Atendente;
-import br.com.MundoDoEstudante.classes.Lojas;
+import br.com.MundoDoEstudante.modelos.Atendente;
+import br.com.MundoDoEstudante.modelos.Lojas;
 
 public class AplicacaoCasa {
 

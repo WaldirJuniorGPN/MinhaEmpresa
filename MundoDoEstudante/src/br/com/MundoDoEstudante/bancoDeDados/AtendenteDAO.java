@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import br.com.MundoDoEstudante.classes.Atendente;
+import br.com.MundoDoEstudante.modelos.Atendente;
 
 public class AtendenteDAO {
 

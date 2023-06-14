@@ -1,4 +1,4 @@
-package br.com.MundoDoEstudante.classes;
+package br.com.MundoDoEstudante.modelos;
 
 import br.com.MundoDoEstudante.bancoDeDados.AtendenteDAO;
 

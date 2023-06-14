@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import br.com.MundoDoEstudante.bancoDeDados.AtendenteDAO;
 import br.com.MundoDoEstudante.classes.calculadoraGratificacao.CalculadorGratificacao;
 
 @Entity

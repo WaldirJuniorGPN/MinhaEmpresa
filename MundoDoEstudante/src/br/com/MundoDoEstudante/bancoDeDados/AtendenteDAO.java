@@ -1,4 +1,4 @@
-package br.com.MundoDoEstudante.classes;
+package br.com.MundoDoEstudante.bancoDeDados;
 
 import java.math.BigDecimal;
 
@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import br.com.MundoDoEstudante.bancoDeDados.JpaUtil;
+import br.com.MundoDoEstudante.classes.Atendente;
 
 public class AtendenteDAO {
 

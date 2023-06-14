@@ -1,4 +1,4 @@
-package br.com.MundoDoEstudante.classes;
+package br.com.MundoDoEstudante.bancoDeDados;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

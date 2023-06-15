@@ -51,7 +51,16 @@ public class Atendente extends Funcionario implements Gratificacao {
 		this.gratificacaoTotal = BigDecimal.ZERO;
 	}
 	
-	public Atendente() {}
+	public Atendente() {
+		calculador.inspecionarAtendentes(this);
+		observer.inspecionarAtendentes(this);
+		this.gratificacaoTotal = BigDecimal.ZERO;
+	}
+
+	public static Atendente INSTANCE() {
+		return new Atendente();
+	}
+	
 
 	@Override
 	public BigDecimal getGraficacao() {

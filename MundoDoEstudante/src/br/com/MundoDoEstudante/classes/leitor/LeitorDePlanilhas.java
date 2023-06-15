@@ -16,7 +16,7 @@ public class LeitorDePlanilhas {
 	
 	public List<Atendente> carregarAtendentes() {
 		HSSFWorkbook workbook = null;
-		try (FileInputStream arquivo = new FileInputStream(new File("/home/waldirjunior/Downloads/teste.xls"))) {
+		try (FileInputStream arquivo = new FileInputStream(new File("teste.xls"))) {
 			workbook = new HSSFWorkbook(arquivo);
 			HSSFSheet listaDeAtendentes = workbook.getSheetAt(0);
 			

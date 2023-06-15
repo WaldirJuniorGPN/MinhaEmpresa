@@ -17,6 +17,7 @@ import javax.persistence.Transient;
 
 import br.com.MundoDoEstudante.bancoDeDados.AtendenteDAO;
 import br.com.MundoDoEstudante.classes.calculadoraGratificacao.CalculadorGratificacao;
+import br.com.MundoDoEstudante.classes.leitor.LeitorDePlanilhas;
 
 @Entity
 @Table(name = "atendentes")
@@ -145,6 +146,10 @@ public class Atendente extends Funcionario implements Gratificacao {
 				this.getNome(), this.getVendasTotal(), this.getGratificacaoTotal());
 		return novaString;
 
+	}
+	
+	public static void lerPlanilha() {
+		new LeitorDePlanilhas().carregarAtendentes();
 	}
 	
 	public static void limparTabela() {

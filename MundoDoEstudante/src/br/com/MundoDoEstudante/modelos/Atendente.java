@@ -45,21 +45,21 @@ public class Atendente extends Funcionario implements Gratificacao {
 	
 	private static AtendenteObserver observer = new AtendenteObserver();
 
+	public Atendente(Atendente atendente) {
+		this.polularBanco();
+	}
+	
 	public Atendente(String nome) {
 		super(nome);
-		calculador.inspecionarAtendentes(this);
-		observer.inspecionarAtendentes(this);
-		this.gratificacaoTotal = BigDecimal.ZERO;
+		this.polularBanco();
 	}
 	
 	public Atendente() {
-		calculador.inspecionarAtendentes(this);
-		observer.inspecionarAtendentes(this);
-		this.gratificacaoTotal = BigDecimal.ZERO;
+		
 	}
 
 	public static Atendente INSTANCE() {
-		return new Atendente();
+		return new Atendente(new Atendente());
 	}
 	
 
@@ -148,8 +148,14 @@ public class Atendente extends Funcionario implements Gratificacao {
 
 	}
 	
+	private void polularBanco() {
+		calculador.inspecionarAtendentes(this);
+		observer.inspecionarAtendentes(this);
+		this.gratificacaoTotal = BigDecimal.ZERO;
+	}
+	
 	public static void lerPlanilha() {
-		new LeitorDePlanilhas().carregarAtendentes();
+		lista = new LeitorDePlanilhas().carregarAtendentes();
 	}
 	
 	public static void limparTabela() {

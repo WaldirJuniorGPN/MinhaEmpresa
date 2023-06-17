@@ -10,17 +10,21 @@ import br.com.MundoDoEstudante.modelos.Atendente;
 public class Leitor {
 
 	public static Atendente criaAtendenteDeCadaLinha(Row row) {
-		
+
 		Atendente atendente = Atendente.INSTANCE();
-		
+
 		StreamUtil.convertToStream(row.cellIterator()).forEach(cell -> {
 			switch (cell.getColumnIndex()) {
-				case 1:
-					atendente.setNome(cell.getStringCellValue());
-					break;
-				case 7:
-					atendente.setVendasPrimeiraSemana(new BigDecimal(cell.getStringCellValue()));
-					break;
+			case 1:
+				atendente.setNome(cell.getStringCellValue());
+				break;
+			case 7:
+				String valorString = cell.getStringCellValue();
+				if (!valorString.isEmpty()) {
+					valorString = valorString.replace(",", ".");
+					atendente.setVendasPrimeiraSemana(new BigDecimal(valorString));
+				}
+				break;
 			}
 		});
 		return atendente;

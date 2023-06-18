@@ -30,9 +30,7 @@ public class AtendenteDAO {
 			entityManager.persist(atendente);
 			transaction.commit();
 		} catch (Exception e) {
-			if (transaction != null && transaction.isActive()) {
-				transaction.rollback();
-			}
+			AtendenteDAO.acionaRollbackTransaction(transaction);
 			throw new RuntimeException("Erro ao salvar o atendente no banco " + e.getMessage(), e);
 		}
 	}
@@ -49,9 +47,7 @@ public class AtendenteDAO {
 				entityManager.createNativeQuery("DROP TABLE IF EXISTS Atendente").executeUpdate();
 				transaction.commit();
 			} catch (Exception e) {
-				if (transaction != null && transaction.isActive()) {
-					transaction.rollback();
-				}
+				AtendenteDAO.acionaRollbackTransaction(transaction);
 				throw new RuntimeException("Erro ao limpar dados na tabela" + e.getMessage(), e);
 			} finally {
 				entityManager.close();
@@ -85,9 +81,7 @@ public class AtendenteDAO {
 			transaction.commit();
 
 		} catch (Exception e) {
-			if (transaction != null && transaction.isActive()) {
-				transaction.rollback();
-			}
+			AtendenteDAO.acionaRollbackTransaction(transaction);
 			throw new RuntimeException("Erro ao salvar a gratificacao: " + e.getMessage(), e);
 		} finally {
 			JpaUtil.closeEntityManager();
@@ -104,12 +98,16 @@ public class AtendenteDAO {
 			atendenteAtualizado.setVendasTotal(atendenteAtualizado.getVendasTotal().add(vendasTotal));
 			transaction.commit();
 		} catch (Exception e) {
-			if (transaction != null && transaction.isActive()) {
-				transaction.rollback();
-			}
+			AtendenteDAO.acionaRollbackTransaction(transaction);
 			throw new RuntimeException("Erro ao adicionar vendas totais " + e.getMessage(), e);
 		} finally {
 			JpaUtil.closeEntityManager();
+		}
+	}
+	
+	public static void acionaRollbackTransaction(EntityTransaction transaction) {
+		if(transaction != null && transaction.isActive()) {
+			transaction.rollback();
 		}
 	}
 

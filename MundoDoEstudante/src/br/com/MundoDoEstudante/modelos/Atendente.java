@@ -158,10 +158,6 @@ public class Atendente extends Funcionario implements Gratificacao {
 		lista = new LeitorDePlanilhas().carregarAtendentes();
 	}
 	
-	public static void limparTabela() {
-		AtendenteDAO.limparTabela();
-	}
-
 	public static void calcularGratificacao(Lojas loja) {
 		lista = calculador.calcularPercentuais(loja);
 	}

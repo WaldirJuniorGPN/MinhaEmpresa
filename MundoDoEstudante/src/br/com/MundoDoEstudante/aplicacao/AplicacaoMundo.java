@@ -9,7 +9,6 @@ public class AplicacaoMundo {
 
     public static void main(String[] args) {
     	
-    	Atendente.limparTabela();
     	
         Atendente lucas = new Atendente("Lucas");
         Atendente victor = new Atendente("Victor");

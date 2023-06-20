@@ -1,6 +1,7 @@
 package br.com.MundoDoEstudante.bancoDeDados;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -24,48 +25,24 @@ public class AtendenteDAO {
 
 		EntityManager entityManager = JpaUtil.getEntityManager();
 		EntityTransaction transaction = entityManager.getTransaction();
-
-		try {
-			transaction.begin();
-			entityManager.persist(atendente);
-			transaction.commit();
-		} catch (Exception e) {
-			AtendenteDAO.acionaRollbackTransaction(transaction);
-			throw new RuntimeException("Erro ao salvar o atendente no banco " + e.getMessage(), e);
-		}
-	}
-
-	public static void limparTabela() {
-
-		if (tabelaExiste()) {
-
-			EntityManager entityManager = JpaUtil.getEntityManager();
-			EntityTransaction transaction = entityManager.getTransaction();
-
+		
+		Atendente atendenteDoBanco = AtendenteDAO.consultaAtendente(atendente.getNome());
+		
+		if(atendenteDoBanco != null) {
 			try {
 				transaction.begin();
-				entityManager.createNativeQuery("DROP TABLE IF EXISTS Atendente").executeUpdate();
+				entityManager.persist(atendente);
 				transaction.commit();
 			} catch (Exception e) {
 				AtendenteDAO.acionaRollbackTransaction(transaction);
-				throw new RuntimeException("Erro ao limpar dados na tabela" + e.getMessage(), e);
-			} finally {
-				entityManager.close();
+				throw new RuntimeException("Erro ao salvar o atendente no banco " + e.getMessage(), e);
 			}
-		} else {
-			System.out.println("Não existe tabela Atendente no banco de dados");
+		}else {
+			AtendenteDAO.adicionarVendasTotal(atendente, atendente.getVendasTotal());
 		}
+		
 	}
 
-	private static boolean tabelaExiste() {
-		EntityManager entityManager = JpaUtil.getEntityManager();
-		try {
-			entityManager.createNativeQuery("SELECT 1 FROM Atendente").getSingleResult();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
 
 	public static void salvarGratificacao(Atendente atendente, BigDecimal valor) {
 		EntityManager entityManager = JpaUtil.getEntityManager();
@@ -104,6 +81,22 @@ public class AtendenteDAO {
 			JpaUtil.closeEntityManager();
 		}
 	}
+	
+	public static Atendente consultaAtendente(String nome) {
+	    EntityManager entityManager = JpaUtil.getEntityManager();
+	    TypedQuery<Atendente> query = entityManager
+	            .createQuery("SELECT a FROM Atendente a WHERE a.nome = :nome", Atendente.class);
+	    query.setParameter("nome", nome);
+	    List<Atendente> resultados = query.getResultList();
+	    JpaUtil.closeEntityManager();
+
+	    if (resultados.isEmpty()) {
+	        return null;
+	    } else {
+	        return resultados.get(0);
+	    }
+	}
+
 	
 	public static void acionaRollbackTransaction(EntityTransaction transaction) {
 		if(transaction != null && transaction.isActive()) {

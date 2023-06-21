@@ -100,9 +100,7 @@ public class AplicacaoMundo {
 
         Atendente.calcularGratificacao(Lojas.MUNDO);
         
-        Atendente.adicionarVendasNoBanco();
-        
-        Atendente.salvarGratificacaoNoBanco();
+        Atendente.polularBanco();
         
         Atendente.ordenarVendaTotal();
 

@@ -15,7 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import br.com.MundoDoEstudante.bancoDeDados.AtendenteDAO;
 import br.com.MundoDoEstudante.classes.calculadoraGratificacao.CalculadorGratificacao;
 import br.com.MundoDoEstudante.classes.leitor.LeitorDePlanilhas;
 
@@ -46,12 +45,12 @@ public class Atendente extends Funcionario implements Gratificacao {
 	private static AtendenteObserver observer = new AtendenteObserver();
 
 	public Atendente(Atendente atendente) {
-		this.polularBanco();
+		Atendente.calculador.inspecionarAtendentes(this);
 	}
 	
 	public Atendente(String nome) {
 		super(nome);
-		this.polularBanco();
+		Atendente.calculador.inspecionarAtendentes(this);
 	}
 	
 	public Atendente() {
@@ -93,9 +92,6 @@ public class Atendente extends Funcionario implements Gratificacao {
 		
 	}
 	
-	public static void salvarGratificacaoNoBanco() {
-		lista.forEach(atendente -> AtendenteDAO.salvarGratificacao(atendente, atendente.getGratificacaoTotal()));
-	}
 	
 	public void setGraficacaoSemanal(BigDecimal valor) {
 		this.gratificacaoSemanal = valor;
@@ -105,9 +101,6 @@ public class Atendente extends Funcionario implements Gratificacao {
 		this.gratificacaoTotal = valor;
 	}
 	
-	public static void adicionarVendasNoBanco() {
-		lista.forEach(atendente -> AtendenteDAO.adicionarVendasTotal(atendente, atendente.getVendasTotal()));
-	}
 
 	public void setVendasPrimeiraSemana(BigDecimal valor) {
 
@@ -148,27 +141,26 @@ public class Atendente extends Funcionario implements Gratificacao {
 
 	}
 	
-	private void polularBanco() {
-		calculador.inspecionarAtendentes(this);
-		observer.inspecionarAtendentes(this);
-		this.gratificacaoTotal = BigDecimal.ZERO;
+	public static void polularBanco() {
+		Atendente.lista.forEach(atendente -> Atendente.observer.inspecionarAtendentes(atendente));
 	}
-	
+
+		
 	public static void lerPlanilha() {
-		lista = new LeitorDePlanilhas().carregarAtendentes();
+		Atendente.lista = new LeitorDePlanilhas().carregarAtendentes();
 	}
 	
 	public static void calcularGratificacao(Lojas loja) {
-		lista = calculador.calcularPercentuais(loja);
+		Atendente.lista = Atendente.calculador.calcularPercentuais(loja);
 	}
 	
 	public static void ordenarVendaTotal() {
-		lista.sort(Comparator.comparing(Atendente::getVendasTotal));
-		Collections.reverse(lista);
+		Atendente.lista.sort(Comparator.comparing(Atendente::getVendasTotal));
+		Collections.reverse(Atendente.lista);
 	}
 
 	public static void imprimirResultado() {
-		lista.forEach(System.out::println);
+		Atendente.lista.forEach(System.out::println);
 	}
 
 }

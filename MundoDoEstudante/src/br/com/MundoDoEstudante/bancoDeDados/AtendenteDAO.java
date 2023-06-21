@@ -26,9 +26,6 @@ public class AtendenteDAO {
 		EntityManager entityManager = JpaUtil.getEntityManager();
 		EntityTransaction transaction = entityManager.getTransaction();
 		
-		Atendente atendenteDoBanco = AtendenteDAO.consultaAtendente(atendente.getNome());
-		
-		if(atendenteDoBanco != null) {
 			try {
 				transaction.begin();
 				entityManager.persist(atendente);
@@ -37,10 +34,7 @@ public class AtendenteDAO {
 				AtendenteDAO.acionaRollbackTransaction(transaction);
 				throw new RuntimeException("Erro ao salvar o atendente no banco " + e.getMessage(), e);
 			}
-		}else {
-			AtendenteDAO.adicionarVendasTotal(atendente, atendente.getVendasTotal());
-		}
-		
+		JpaUtil.closeEntityManager();
 	}
 
 

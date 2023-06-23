@@ -76,19 +76,18 @@ public class AtendenteDAO {
 		}
 	}
 	
-	public static Atendente consultaAtendente(String nome) {
+	public static boolean consultaAtendente(Atendente atendente) {
 	    EntityManager entityManager = JpaUtil.getEntityManager();
 	    TypedQuery<Atendente> query = entityManager
-	            .createQuery("SELECT a FROM Atendente a WHERE a.nome = :nome", Atendente.class);
-	    query.setParameter("nome", nome);
+	            .createQuery("SELECT a FROM Atendente a WHERE a.getNome = :atendente", Atendente.class);
+	    query.setParameter("atendente", atendente.getNome());
 	    List<Atendente> resultados = query.getResultList();
 	    JpaUtil.closeEntityManager();
-
-	    if (resultados.isEmpty()) {
-	        return null;
-	    } else {
-	        return resultados.get(0);
+	    
+	    if(resultados.isEmpty()) {
+	    	return false;
 	    }
+	    return true;
 	}
 
 	

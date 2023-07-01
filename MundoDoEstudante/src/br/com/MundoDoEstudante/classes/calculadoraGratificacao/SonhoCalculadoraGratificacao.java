@@ -7,10 +7,10 @@ import br.com.MundoDoEstudante.modelos.Atendente;
 
 public class SonhoCalculadoraGratificacao extends CalculadorGratificacao {
 
-	private static final Double PRIMEIRO_COLOCADO = 0.01;
+	private static final Double PRIMEIRO_COLOCADO = 0.012;
 	private static final Double SEGUNDO_COLOCADO = 0.008;
-	private static final Double TERCEIRO_COLOCADO = 0.006;
-	private static final Double DEMAIS_COLOCADOS = 0.005;
+	private static final Double TERCEIRO_COLOCADO = 0.004;
+	private static final Double DEMAIS_COLOCADOS = 0.002;
 	
 	
 	public List<Atendente> calcularGratificacao() {

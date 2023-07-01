@@ -100,7 +100,7 @@ public class AplicacaoMundo {
 
         Atendente.calcularGratificacao(Lojas.MUNDO);
         
-        Atendente.polularBanco();
+//        Atendente.polularBanco();
         
         Atendente.ordenarVendaTotal();
 

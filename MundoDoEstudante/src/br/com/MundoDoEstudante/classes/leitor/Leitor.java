@@ -22,7 +22,7 @@ public class Leitor {
 				String valorString = cell.getStringCellValue();
 				if (!valorString.isEmpty()) {
 					valorString = valorString.replace(",", ".");
-					atendente.setVendasPrimeiraSemana(new BigDecimal(valorString));
+					atendente.setVendas(new BigDecimal(valorString));
 				}
 				break;
 			}

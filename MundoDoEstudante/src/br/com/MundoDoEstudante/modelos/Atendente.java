@@ -21,11 +21,11 @@ import br.com.MundoDoEstudante.classes.leitor.LeitorDePlanilhas;
 @Entity
 @Table(name = "atendentes")
 public class Atendente extends Funcionario implements Gratificacao {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@Column(name = "gratificacao", updatable = true, scale = 2, nullable = true)
 	private BigDecimal gratificacaoTotal = BigDecimal.ZERO;
 
@@ -34,44 +34,42 @@ public class Atendente extends Funcionario implements Gratificacao {
 
 	@Transient
 	private BigDecimal vendasSemanais = BigDecimal.ZERO;
-	
+
 	@Transient
 	private BigDecimal gratificacaoSemanal = BigDecimal.ZERO;
-	
+
 	static private List<Atendente> lista = new ArrayList<>();
-	
+
 	private static CalculadorGratificacao calculador = new CalculadorGratificacao();
-	
+
 	private static AtendenteObserver observer = new AtendenteObserver();
 
 	public Atendente(Atendente atendente) {
 		Atendente.calculador.inspecionarAtendentes(this);
 	}
-	
+
 	public Atendente(String nome) {
 		super(nome);
 		Atendente.calculador.inspecionarAtendentes(this);
 	}
-	
+
 	public Atendente() {
-		
+
 	}
 
 	public static Atendente INSTANCE() {
 		return new Atendente(new Atendente());
 	}
-	
 
 	@Override
 	public BigDecimal getGraficacao() {
 		return this.gratificacaoSemanal;
 	}
 
-	
 	public long getId() {
 		return this.id;
 	}
-	
+
 	public BigDecimal getGratificacaoTotal() {
 		return this.gratificacaoTotal;
 	}
@@ -89,30 +87,61 @@ public class Atendente extends Funcionario implements Gratificacao {
 		this.vendasSemanais = BigDecimal.ZERO;
 		this.setGraficacaoSemanal(valor);
 		this.gratificacaoTotal = this.gratificacaoTotal.add(valor);
-		
+
 	}
-	
-	
+
 	public void setGraficacaoSemanal(BigDecimal valor) {
 		this.gratificacaoSemanal = valor;
 	}
-	
+
 	public void setGratificacaoTotal(BigDecimal valor) {
 		this.gratificacaoTotal = valor;
 	}
-	
 
-	public void setVendasPrimeiraSemana(BigDecimal valor) {
+	public void setVendasTotal(BigDecimal vendasTotal) {
+		this.vendasTotal = vendasTotal;
+	}
 
-		if (valor.compareTo(BigDecimal.ZERO) < 0) {
-			throw new IllegalArgumentException("O valor da venda não pode ser negativo");
-		}
+	public void setVendas(BigDecimal valor) {
+
 		this.vendasSemanais = valor;
 		this.vendasTotal = this.vendasTotal.add(valor);
 	}
-	
-	public void setVendasTotal(BigDecimal vendasTotal) {
-		this.vendasTotal = vendasTotal;
+
+	public void setVendasPrimeiraSemana(String valor) {
+
+		String valorFormatado = valor.replace(',', '.');
+
+		BigDecimal bigDecimalFormatado = new BigDecimal(valorFormatado);
+
+		if (bigDecimalFormatado.compareTo(BigDecimal.ZERO) < 0) {
+			throw new IllegalArgumentException("O valor da venda não pode ser negativo");
+		}
+
+		setVendas(bigDecimalFormatado);
+	}
+
+	public void setVendasSegundaSemana(String valor) {
+		this.setVendasPrimeiraSemana(valor);
+	}
+
+	public void setVendasTerceiraSemana(String valor) {
+		this.setVendasPrimeiraSemana(valor);
+	}
+
+	public void setVendasQuartaSemana(String valor) {
+		this.setVendasPrimeiraSemana(valor);
+	}
+
+	public void setVendasQuintaSemana(String valor) {
+		this.setVendasPrimeiraSemana(valor);
+	}
+
+	// ********* SOBRECARGA *********
+
+	public void setVendasPrimeiraSemana(BigDecimal valor) {
+
+		setVendas(valor);
 	}
 
 	public void setVendasSegundaSemana(BigDecimal valor) {
@@ -130,8 +159,9 @@ public class Atendente extends Funcionario implements Gratificacao {
 	public void setVendasQuintaSemana(BigDecimal valor) {
 		this.setVendasPrimeiraSemana(valor);
 	}
-
 	
+	// ********* FIM DA SOBRECARGA *********
+
 	@Override
 	public String toString() {
 
@@ -140,20 +170,19 @@ public class Atendente extends Funcionario implements Gratificacao {
 		return novaString;
 
 	}
-	
+
 	public static void polularBanco() {
 		Atendente.lista.forEach(atendente -> Atendente.observer.inspecionarAtendentes(atendente));
 	}
 
-		
 	public static void lerPlanilha() {
 		Atendente.lista = new LeitorDePlanilhas().carregarAtendentes();
 	}
-	
+
 	public static void calcularGratificacao(Lojas loja) {
 		Atendente.lista = Atendente.calculador.calcularPercentuais(loja);
 	}
-	
+
 	public static void ordenarVendaTotal() {
 		Atendente.lista.sort(Comparator.comparing(Atendente::getVendasTotal));
 		Collections.reverse(Atendente.lista);

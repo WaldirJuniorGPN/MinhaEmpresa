@@ -16,38 +16,38 @@ public class AplicacaoCasa {
 
 		Atendente.calcularGratificacao(Lojas.VOVO);
 
-		beatriz.setVendasPrimeiraSemana(new BigDecimal("1194.06"));
-		juliana.setVendasPrimeiraSemana(new BigDecimal("104.80"));
-		loja.setVendasPrimeiraSemana(new BigDecimal("66.00"));
-		valeria.setVendasPrimeiraSemana(new BigDecimal("2417.98"));
+		beatriz.setVendasPrimeiraSemana("9546,67");
+		juliana.setVendasPrimeiraSemana("69,80");
+		loja.setVendasPrimeiraSemana(new BigDecimal(331.00).add(new BigDecimal("4.99")));
+		valeria.setVendasPrimeiraSemana("6511,43");
 
 		Atendente.calcularGratificacao(Lojas.VOVO);
 
-		beatriz.setVendasSegundaSemana(new BigDecimal("5331.31"));
-		juliana.setVendasSegundaSemana(new BigDecimal("362.87"));
-		loja.setVendasSegundaSemana(new BigDecimal("23.99").add(new BigDecimal("390.00")));
-		valeria.setVendasSegundaSemana(new BigDecimal("8626.86"));
+		beatriz.setVendasSegundaSemana(new BigDecimal("10185.91").add(new BigDecimal("3419.67")));
+		juliana.setVendasSegundaSemana("220,58");
+		loja.setVendasSegundaSemana(new BigDecimal("52.89").add(new BigDecimal("610.00")));
+		valeria.setVendasSegundaSemana("13469,11");
 
 		Atendente.calcularGratificacao(Lojas.VOVO);
 
-		beatriz.setVendasTerceiraSemana(new BigDecimal("5530.14"));
-		juliana.setVendasTerceiraSemana(new BigDecimal("48.97"));
-		loja.setVendasTerceiraSemana(new BigDecimal("173.87").add(new BigDecimal("352.98")));
-		valeria.setVendasTerceiraSemana(new BigDecimal("10937.92"));
+		beatriz.setVendasTerceiraSemana("5118,29");
+		juliana.setVendasTerceiraSemana("143,66");
+		loja.setVendasTerceiraSemana(new BigDecimal("100.87").add(new BigDecimal("514.00")));
+		valeria.setVendasTerceiraSemana(new BigDecimal("9325.84").add(new BigDecimal("2217.65")));
 
 		Atendente.calcularGratificacao(Lojas.VOVO);
 
-		beatriz.setVendasQuartaSemana(new BigDecimal("5847.61"));
-		juliana.setVendasQuartaSemana(new BigDecimal("22.90").add(new BigDecimal("22.00")));
-		loja.setVendasQuartaSemana(new BigDecimal("348.00"));
-		valeria.setVendasQuartaSemana(new BigDecimal("3910.73"));
+		beatriz.setVendasQuartaSemana("7247,62");
+		juliana.setVendasQuartaSemana("904,55");
+		loja.setVendasQuartaSemana(new BigDecimal("130.85").add(new BigDecimal("459.99")));
+		valeria.setVendasQuartaSemana("6272,79");
 
 		Atendente.calcularGratificacao(Lojas.VOVO);
 
-		beatriz.setVendasQuintaSemana(new BigDecimal("2704.52"));
-		juliana.setVendasQuintaSemana(BigDecimal.ZERO);
-		loja.setVendasQuintaSemana(new BigDecimal("23.99").add(new BigDecimal("369.00")));
-		valeria.setVendasQuintaSemana(new BigDecimal("7184.58"));
+		beatriz.setVendasQuintaSemana("8215,81");
+		juliana.setVendasQuintaSemana("150,00");
+		loja.setVendasQuintaSemana(new BigDecimal("27.89").add(new BigDecimal("198.00")));
+		valeria.setVendasQuintaSemana("5723,24");
 
 		Atendente.calcularGratificacao(Lojas.VOVO);
 

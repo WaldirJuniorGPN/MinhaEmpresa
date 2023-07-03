@@ -7,103 +7,91 @@ import br.com.MundoDoEstudante.modelos.Lojas;
 
 public class AplicacaoMundo {
 
-    public static void main(String[] args) {
-    	
-    	
-        Atendente lucas = new Atendente("Lucas");
-        Atendente victor = new Atendente("Victor");
-        Atendente loja = new Atendente("Loja");
-        Atendente nailton = new Atendente("Nailton");
-        Atendente julia = new Atendente("Julia");
-        Atendente apoio = new Atendente("Apoio");
-        Atendente camila = new Atendente("Camila");
-        Atendente alvaro = new Atendente("Alvaro");
-        Atendente thaina = new Atendente("Thaina");
-        Atendente costa = new Atendente("Costa");
-        Atendente kawan = new Atendente("Kawan");
-        Atendente natiele = new Atendente("Natiele");
-        
+	public static void main(String[] args) {
 
-        Atendente.calcularGratificacao(Lojas.MUNDO);
+		Atendente lucas = new Atendente("Lucas");
+		Atendente victor = new Atendente("Victor");
+		Atendente loja = new Atendente("Loja");
+		Atendente nailton = new Atendente("Nailton");
+		Atendente apoio = new Atendente("Apoio");
+		Atendente alvaro = new Atendente("Alvaro");
+		Atendente thaina = new Atendente("Thaina");
+		Atendente costa = new Atendente("Costa");
+		Atendente kawan = new Atendente("Kawan");
+		Atendente natiele = new Atendente("Natiele");
 
-        natiele.setVendasPrimeiraSemana(BigDecimal.valueOf(3501.66));
-        kawan.setVendasPrimeiraSemana(BigDecimal.valueOf(720.23));
-        costa.setVendasPrimeiraSemana(BigDecimal.valueOf(3780.44));
-        lucas.setVendasPrimeiraSemana(BigDecimal.valueOf(40.29));
-        victor.setVendasPrimeiraSemana(BigDecimal.valueOf(4408.28));
-        loja.setVendasPrimeiraSemana(BigDecimal.valueOf(1500.73));
-        nailton.setVendasPrimeiraSemana(BigDecimal.valueOf(2132.69));
-        julia.setVendasPrimeiraSemana(BigDecimal.valueOf(1630.06));
-        camila.setVendasPrimeiraSemana(BigDecimal.valueOf(3082.44));
-        alvaro.setVendasPrimeiraSemana(BigDecimal.valueOf(47.57));
-        thaina.setVendasPrimeiraSemana(BigDecimal.valueOf(2485.07));
+		Atendente.calcularGratificacao(Lojas.MUNDO);
 
-        Atendente.calcularGratificacao(Lojas.MUNDO);
+		natiele.setVendasPrimeiraSemana("4474,86");
+		kawan.setVendasPrimeiraSemana("5753,55");
+		costa.setVendasPrimeiraSemana("4850,61");
+		lucas.setVendasPrimeiraSemana("2940,40");
+		victor.setVendasPrimeiraSemana("5826,96");
+		loja.setVendasPrimeiraSemana("1244,00");
+		nailton.setVendasPrimeiraSemana(BigDecimal.ZERO);
+		alvaro.setVendasPrimeiraSemana(BigDecimal.ZERO);
+		thaina.setVendasPrimeiraSemana("4883,74");
+		apoio.setVendasPrimeiraSemana("475,38");
 
-        natiele.setVendasSegundaSemana(BigDecimal.valueOf(6109.99));
-        kawan.setVendasSegundaSemana(BigDecimal.valueOf(7256.17));
-        costa.setVendasSegundaSemana(BigDecimal.valueOf(9371.63));
-        lucas.setVendasSegundaSemana(BigDecimal.valueOf(1130.36));
-        victor.setVendasSegundaSemana(BigDecimal.valueOf(5102.28));
-        loja.setVendasSegundaSemana(BigDecimal.valueOf(4364.65));
-        nailton.setVendasSegundaSemana(BigDecimal.valueOf(5021.04));
-        julia.setVendasSegundaSemana(BigDecimal.valueOf(5944.46));
-        apoio.setVendasSegundaSemana(BigDecimal.valueOf(461.78));
-        camila.setVendasSegundaSemana(BigDecimal.valueOf(7228.64));
-        alvaro.setVendasSegundaSemana(BigDecimal.valueOf(454.09));
-        thaina.setVendasSegundaSemana(BigDecimal.valueOf(7150.17));
+		Atendente.calcularGratificacao(Lojas.MUNDO);
 
-        Atendente.calcularGratificacao(Lojas.MUNDO);
+		natiele.setVendasSegundaSemana("7696,23");
+		kawan.setVendasSegundaSemana("6866,07");
+		costa.setVendasSegundaSemana("5310,00");
+		lucas.setVendasSegundaSemana("2067,33");
+		victor.setVendasSegundaSemana("7025,42");
+		loja.setVendasSegundaSemana(new BigDecimal("31.95").add(new BigDecimal("2259.96")));
+		nailton.setVendasSegundaSemana(BigDecimal.ZERO);
+		apoio.setVendasSegundaSemana("513,55");
+		alvaro.setVendasSegundaSemana(BigDecimal.ZERO);
+		thaina.setVendasSegundaSemana("8050,99");
 
-        natiele.setVendasTerceiraSemana(BigDecimal.valueOf(6434.42));
-        kawan.setVendasTerceiraSemana(BigDecimal.valueOf(7579.14));
-        costa.setVendasTerceiraSemana(BigDecimal.valueOf(6794.67));
-        lucas.setVendasTerceiraSemana(BigDecimal.valueOf(2231.22));
-        victor.setVendasTerceiraSemana(BigDecimal.valueOf(9806.41));
-        loja.setVendasTerceiraSemana(BigDecimal.valueOf(3770.05));
-        nailton.setVendasTerceiraSemana(BigDecimal.valueOf(6046.99));
-        julia.setVendasTerceiraSemana(BigDecimal.valueOf(4782.81));
-        apoio.setVendasTerceiraSemana(BigDecimal.valueOf(18.72));
-        camila.setVendasTerceiraSemana(BigDecimal.valueOf(3138.33));
-        alvaro.setVendasTerceiraSemana(BigDecimal.valueOf(355.22));
-        thaina.setVendasTerceiraSemana(BigDecimal.valueOf(8475.50));
+		Atendente.calcularGratificacao(Lojas.MUNDO);
 
-        Atendente.calcularGratificacao(Lojas.MUNDO);
+		natiele.setVendasTerceiraSemana("4798,25");
+		kawan.setVendasTerceiraSemana("9840,28");
+		costa.setVendasTerceiraSemana("6876,06");
+		lucas.setVendasTerceiraSemana("3481,10");
+		victor.setVendasTerceiraSemana("5702,20");
+		loja.setVendasTerceiraSemana(
+				new BigDecimal("82.68").add(new BigDecimal("1965.89").add(new BigDecimal("62.44"))));
+		nailton.setVendasTerceiraSemana(BigDecimal.ZERO);
+		apoio.setVendasTerceiraSemana("1193,15");
+		alvaro.setVendasTerceiraSemana(BigDecimal.ZERO);
+		thaina.setVendasTerceiraSemana("9631,76");
 
-        natiele.setVendasQuartaSemana(BigDecimal.valueOf(6006.42));
-        kawan.setVendasQuartaSemana(BigDecimal.valueOf(5976.76));
-        costa.setVendasQuartaSemana(BigDecimal.valueOf(3260.59));
-        lucas.setVendasQuartaSemana(BigDecimal.valueOf(189.11));
-        victor.setVendasQuartaSemana(BigDecimal.valueOf(4579.32));
-        loja.setVendasQuartaSemana(BigDecimal.valueOf(867.34));
-        nailton.setVendasQuartaSemana(BigDecimal.valueOf(3959.95));
-        julia.setVendasQuartaSemana(BigDecimal.valueOf(1189.44));
-        apoio.setVendasQuartaSemana(BigDecimal.ZERO);
-        camila.setVendasQuartaSemana(BigDecimal.valueOf(3286.61));
-        alvaro.setVendasQuartaSemana(BigDecimal.valueOf(95.97));
-        thaina.setVendasQuartaSemana(BigDecimal.valueOf(6121.20));
+		Atendente.calcularGratificacao(Lojas.MUNDO);
 
-        Atendente.calcularGratificacao(Lojas.MUNDO);
+		natiele.setVendasQuartaSemana("5232,97");
+		kawan.setVendasQuartaSemana("6825,80");
+		costa.setVendasQuartaSemana("5587,43");
+		lucas.setVendasQuartaSemana("3666,56");
+		victor.setVendasQuartaSemana("4057,67");
+		loja.setVendasQuartaSemana(new BigDecimal("197.62").add(new BigDecimal("1101.81")));
+		nailton.setVendasQuartaSemana(BigDecimal.ZERO);
+		apoio.setVendasQuartaSemana("575,88");
+		alvaro.setVendasQuartaSemana(BigDecimal.ZERO);
+		thaina.setVendasQuartaSemana("6007,48");
 
-        natiele.setVendasQuintaSemana(BigDecimal.valueOf(3867.44));
-        kawan.setVendasQuintaSemana(BigDecimal.valueOf(5498.11));
-        costa.setVendasQuintaSemana(BigDecimal.valueOf(3119.99));
-        lucas.setVendasQuintaSemana(BigDecimal.valueOf(1335.81));
-        victor.setVendasQuintaSemana(BigDecimal.valueOf(6224.91));
-        loja.setVendasQuintaSemana(BigDecimal.valueOf(2659.47));
-        nailton.setVendasQuintaSemana(BigDecimal.valueOf(5343.11));
-        julia.setVendasQuintaSemana(BigDecimal.valueOf(3112.83));
-        apoio.setVendasQuintaSemana(BigDecimal.valueOf(49.90));
-        camila.setVendasQuintaSemana(BigDecimal.valueOf(2148.67));
-        alvaro.setVendasQuintaSemana(BigDecimal.valueOf(466.13));
-        thaina.setVendasQuintaSemana(BigDecimal.valueOf(6676.59));
+		Atendente.calcularGratificacao(Lojas.MUNDO);
 
-        Atendente.calcularGratificacao(Lojas.MUNDO);
-        
+		natiele.setVendasQuintaSemana("3491,75");
+		kawan.setVendasQuintaSemana("4835,59");
+		costa.setVendasQuintaSemana("4271,00");
+		lucas.setVendasQuintaSemana("3356,79");
+		victor.setVendasQuintaSemana("5307,01");
+		loja.setVendasQuintaSemana(new BigDecimal("35.06").add(new BigDecimal("544.90")));
+		nailton.setVendasQuintaSemana(BigDecimal.ZERO);
+		apoio.setVendasQuintaSemana("417,36");
+		alvaro.setVendasQuintaSemana(BigDecimal.ZERO);
+		thaina.setVendasQuintaSemana("4311,92");
+
+		Atendente.calcularGratificacao(Lojas.MUNDO);
+
 //        Atendente.polularBanco();
-        
-        Atendente.ordenarVendaTotal();
 
-        Atendente.imprimirResultado();
-    }
+		Atendente.ordenarVendaTotal();
+
+		Atendente.imprimirResultado();
+	}
 }

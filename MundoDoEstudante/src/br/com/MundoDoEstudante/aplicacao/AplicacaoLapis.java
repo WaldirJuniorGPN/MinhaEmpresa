@@ -12,7 +12,6 @@ public class AplicacaoLapis {
 		Atendente erik = new Atendente("Erik");
 		Atendente val = new Atendente("Val");
 		Atendente rodrigues = new Atendente("Rodrigues");
-		Atendente gabriel = new Atendente("Gabriel");
 		Atendente cintiane = new Atendente("Cintiane");
 		Atendente guilherme = new Atendente("Guilherme");
 		Atendente jose = new Atendente("Jose");
@@ -22,66 +21,71 @@ public class AplicacaoLapis {
 
 		Atendente.calcularGratificacao(Lojas.LAPIS);
 
-		rodrigues.setVendasPrimeiraSemana(new BigDecimal("1420.10"));
-		erik.setVendasPrimeiraSemana(new BigDecimal("961.74"));
-		val.setVendasPrimeiraSemana(new BigDecimal("2561.47"));
-		cintiane.setVendasPrimeiraSemana(new BigDecimal("469.28"));
-		lincoln.setVendasPrimeiraSemana(new BigDecimal("1267.77"));
-		loja.setVendasPrimeiraSemana(new BigDecimal("656.69"));
-		gabriel.setVendasPrimeiraSemana(new BigDecimal("632.93"));
-		guilherme.setVendasPrimeiraSemana(BigDecimal.ZERO);
+		rodrigues.setVendasPrimeiraSemana(new BigDecimal("392.98"));
+		erik.setVendasPrimeiraSemana(new BigDecimal("0.00"));
+		val.setVendasPrimeiraSemana(new BigDecimal("790.35"));
+		cintiane.setVendasPrimeiraSemana(new BigDecimal("451.53"));
+		lincoln.setVendasPrimeiraSemana(new BigDecimal("608.88"));
+		loja.setVendasPrimeiraSemana(new BigDecimal("19.86"));
+		guilherme.setVendasPrimeiraSemana(new BigDecimal("1170.22"));
 
 		Atendente.calcularGratificacao(Lojas.LAPIS);
 
-		jhon.setVendasSegundaSemana(BigDecimal.ZERO);
-		jose.setVendasSegundaSemana(new BigDecimal("33.29"));
-		cintiane.setVendasSegundaSemana(BigDecimal.ZERO);
-		lincoln.setVendasSegundaSemana(new BigDecimal("6876.54"));
-		val.setVendasSegundaSemana(new BigDecimal("12438.49"));
-		erik.setVendasSegundaSemana(new BigDecimal("7753.85"));
-		loja.setVendasSegundaSemana(new BigDecimal("4087.31"));
-		gabriel.setVendasSegundaSemana(new BigDecimal("660.09"));
-		guilherme.setVendasSegundaSemana(BigDecimal.ZERO);
-		rodrigues.setVendasSegundaSemana(new BigDecimal("3608.48"));
+		jhon.setVendasSegundaSemana(new BigDecimal("0.00"));
+		jose.setVendasSegundaSemana(new BigDecimal("0.00"));
+		cintiane.setVendasSegundaSemana(new BigDecimal("1522.11"));
+		lincoln.setVendasSegundaSemana(new BigDecimal("4234.38"));
+		val.setVendasSegundaSemana(new BigDecimal("4695.92"));
+		erik.setVendasSegundaSemana(new BigDecimal("4892.08"));
+		loja.setVendasSegundaSemana(new BigDecimal("692.02"));
+		guilherme.setVendasSegundaSemana(new BigDecimal("2576.01"));
+		rodrigues.setVendasSegundaSemana(new BigDecimal("2452.33"));
 
 		Atendente.calcularGratificacao(Lojas.LAPIS);
 
-		jhon.setVendasTerceiraSemana(BigDecimal.ZERO);
-		jose.setVendasTerceiraSemana(new BigDecimal("20.90"));
-		cintiane.setVendasTerceiraSemana(BigDecimal.ZERO);
-		lincoln.setVendasTerceiraSemana(new BigDecimal("5487.24"));
-		val.setVendasTerceiraSemana(new BigDecimal("12145.17"));
-		erik.setVendasTerceiraSemana(new BigDecimal("5017.44"));
-		loja.setVendasTerceiraSemana(new BigDecimal("2730.03"));
-		gabriel.setVendasTerceiraSemana(BigDecimal.ZERO);
-		guilherme.setVendasTerceiraSemana(new BigDecimal("787.10"));
-		rodrigues.setVendasTerceiraSemana(new BigDecimal("4133.65"));
+		jhon.setVendasTerceiraSemana(new BigDecimal("0.00"));
+		jose.setVendasTerceiraSemana(new BigDecimal("0.00"));
+		cintiane.setVendasTerceiraSemana(new BigDecimal("1792.88"));
+		lincoln.setVendasTerceiraSemana(new BigDecimal("3609.26"));
+		val.setVendasTerceiraSemana(new BigDecimal("4523.33"));
+		erik.setVendasTerceiraSemana(new BigDecimal("3081.92"));
+		loja.setVendasTerceiraSemana(new BigDecimal("678.97"));
+		guilherme.setVendasTerceiraSemana(new BigDecimal("3725.85"));
+		rodrigues.setVendasTerceiraSemana(new BigDecimal("5082.41"));
 
 		Atendente.calcularGratificacao(Lojas.LAPIS);
 
-		jhon.setVendasQuartaSemana(BigDecimal.ZERO);
-		jose.setVendasQuartaSemana(new BigDecimal("25.90"));
-		cintiane.setVendasQuartaSemana(BigDecimal.ZERO);
-		lincoln.setVendasQuartaSemana(new BigDecimal("3106.83"));
-		val.setVendasQuartaSemana(new BigDecimal("6996.61"));
-		erik.setVendasQuartaSemana(new BigDecimal("3016.37"));
-		loja.setVendasQuartaSemana(new BigDecimal("2227.99"));
-		gabriel.setVendasQuartaSemana(BigDecimal.ZERO);
-		guilherme.setVendasQuartaSemana(new BigDecimal("2694.94"));
-		rodrigues.setVendasQuartaSemana(new BigDecimal("3108.09"));
+		jhon.setVendasQuartaSemana(new BigDecimal("0.00"));
+		jose.setVendasQuartaSemana(new BigDecimal("0.00"));
+		cintiane.setVendasQuartaSemana(new BigDecimal("1953.90"));
+		lincoln.setVendasQuartaSemana(new BigDecimal("3457.85"));
+		val.setVendasQuartaSemana(new BigDecimal("4038.88"));
+		erik.setVendasQuartaSemana(new BigDecimal("2895.03"));
+		loja.setVendasQuartaSemana(new BigDecimal("489.80"));
+		guilherme.setVendasQuartaSemana(new BigDecimal("4789.02"));
+		rodrigues.setVendasQuartaSemana(new BigDecimal("2333.68"));
 
 		Atendente.calcularGratificacao(Lojas.LAPIS);
 
-		jhon.setVendasQuintaSemana(BigDecimal.ZERO);
-		jose.setVendasQuintaSemana(BigDecimal.ZERO);
-		cintiane.setVendasQuintaSemana(BigDecimal.ZERO);
-		lincoln.setVendasQuintaSemana(new BigDecimal("4396.33"));
-		val.setVendasQuintaSemana(new BigDecimal("8266.64"));
-		erik.setVendasQuintaSemana(new BigDecimal("4012.73"));
-		loja.setVendasQuintaSemana(new BigDecimal("1359.95"));
-		gabriel.setVendasQuintaSemana(BigDecimal.ZERO);
-		guilherme.setVendasQuintaSemana(new BigDecimal("3079.85"));
-		rodrigues.setVendasQuintaSemana(new BigDecimal("2421.45"));
+		jhon.setVendasQuintaSemana(new BigDecimal("0.00"));
+		jose.setVendasQuintaSemana(new BigDecimal("0.00"));
+		cintiane.setVendasQuintaSemana(new BigDecimal("3155.20"));
+		lincoln.setVendasQuintaSemana(new BigDecimal("5133.32"));
+		val.setVendasQuintaSemana(new BigDecimal("8331.30"));
+		erik.setVendasQuintaSemana(new BigDecimal("1723.02"));
+		loja.setVendasQuintaSemana(new BigDecimal("1606.77"));
+		guilherme.setVendasQuintaSemana(new BigDecimal("5720.81"));
+		rodrigues.setVendasQuintaSemana(new BigDecimal("2846.73"));
+
+		Atendente.calcularGratificacao(Lojas.LAPIS);
+
+		cintiane.setVendasSextaSemana(new BigDecimal("698.18"));
+		erik.setVendasSextaSemana(new BigDecimal("1102.74"));
+		guilherme.setVendasSextaSemana(new BigDecimal("3150.32"));
+		lincoln.setVendasSextaSemana(new BigDecimal("2105.22"));
+		loja.setVendasSextaSemana(new BigDecimal("423.92"));
+		rodrigues.setVendasSextaSemana(new BigDecimal("859.00"));
+		val.setVendasSextaSemana(new BigDecimal("2459.44"));
 
 		Atendente.calcularGratificacao(Lojas.LAPIS);
 

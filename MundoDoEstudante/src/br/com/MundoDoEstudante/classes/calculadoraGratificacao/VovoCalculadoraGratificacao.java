@@ -10,7 +10,7 @@ public class VovoCalculadoraGratificacao extends CalculadorGratificacao{
 	private static final Double PRIMEIRO_COLOCADO = 0.01;
 	private static final Double SEGUNDO_COLOCADO = 0.005;
 	private static final Double TERCEIRO_COLOCADO = 0.002;
-	private static final Double DEMAIS_COLOCADOS = 0.000;
+	private static final Double DEMAIS_COLOCADOS = 0.001;
 	
 	
 	public List<Atendente> calcularGratificacao() {

@@ -131,6 +131,8 @@ public class Atendente extends Funcionario implements Gratificacao {
 		this.setVendasPrimeiraSemana(valor);
 	}
 
+	public void setVendasSextaSemana(BigDecimal valor) {this.setVendasPrimeiraSemana(valor);}
+
 	
 	@Override
 	public String toString() {

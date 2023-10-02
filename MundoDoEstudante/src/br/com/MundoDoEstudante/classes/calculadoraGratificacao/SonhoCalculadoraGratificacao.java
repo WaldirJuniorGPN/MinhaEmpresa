@@ -1,27 +1,22 @@
 package br.com.MundoDoEstudante.classes.calculadoraGratificacao;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.List;
 
-import br.com.MundoDoEstudante.classes.Atendente;
+import br.com.MundoDoEstudante.modelos.Atendente;
 
 public class SonhoCalculadoraGratificacao extends CalculadorGratificacao {
 
-	private static final Double PRIMEIRO_COLOCADO = 0.01;
+	private static final Double PRIMEIRO_COLOCADO = 0.012;
 	private static final Double SEGUNDO_COLOCADO = 0.008;
-	private static final Double TERCEIRO_COLOCADO = 0.006;
-	private static final Double DEMAIS_COLOCADOS = 0.005;
-	private List<Atendente> gratificacoes = new ArrayList<>();
+	private static final Double TERCEIRO_COLOCADO = 0.004;
+	private static final Double DEMAIS_COLOCADOS = 0.002;
 	
-	public SonhoCalculadoraGratificacao(List<Atendente> lista) {
-		gratificacoes = lista;
-	}
 	
 	public List<Atendente> calcularGratificacao() {
 		
-		return super.calcularGratificacao(PRIMEIRO_COLOCADO, SEGUNDO_COLOCADO, TERCEIRO_COLOCADO, DEMAIS_COLOCADOS,
-				this.gratificacoes);
-		
+		return super.calcularGratificacao(BigDecimal.valueOf(PRIMEIRO_COLOCADO), BigDecimal.valueOf(SEGUNDO_COLOCADO),
+				BigDecimal.valueOf(TERCEIRO_COLOCADO), BigDecimal.valueOf(DEMAIS_COLOCADOS));
 	}
 
 }
